@@ -24,8 +24,8 @@
 
 # Realisation
 ## Basic
-### [ ] player can move in the world
-### [ ] player can shoot
-### [ ] enemies
-#### [ ] get hit
-#### [ ] die
+### - [ ] player can move in the world
+### - [ ] player can shoot
+### - [ ] enemies
+#### - [ ] get hit
+#### - [ ] die
