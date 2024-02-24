@@ -29,3 +29,9 @@
 ### - [ ] enemies
 #### - [ ] get hit
 #### - [ ] die
+## Basic
+- [ ] player can move in the world
+- [ ] player can shoot
+- [ ] enemies
+    - [ ] get hit
+    - [ ] die
