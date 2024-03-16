@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://yja5fgu07w0"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_kl8id"]
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_205pd"]
+[ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://Stab.tscn" id="3_2rbtj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wgqdj"]
+radius = 63.0714
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kl8id")
+
+[node name="StabDuration" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="StabCooldown" type="Timer" parent="."]
+
+[node name="Stab" parent="." instance=ExtResource("3_2rbtj")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wgqdj")
+
+[node name="PlayerSprite2" type="Sprite2D" parent="."]
+texture = ExtResource("2_205pd")
+
+[connection signal="timeout" from="StabDuration" to="." method="_on_stab_duration_timeout"]
