@@ -12,8 +12,11 @@ script = ExtResource("1_ngi1q")
 [node name="StabCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 95.5)
 shape = SubResource("RectangleShape2D_4eq15")
+disabled = true
 
 [node name="StabSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 96)
 scale = Vector2(0.75, 1.5)
 texture = ExtResource("1_muppg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

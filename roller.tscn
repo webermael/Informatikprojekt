@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dix0smnrj0j4l"]
+
+[ext_resource type="Script" path="res://roller.gd" id="1_4uln1"]
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_rhhah"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2l6ko"]
+radius = 64.0078
+
+[node name="Roller" type="CharacterBody2D" groups=["Enemies"]]
+platform_floor_layers = 4294967040
+script = ExtResource("1_4uln1")
+
+[node name="RollerSprite" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_rhhah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2l6ko")

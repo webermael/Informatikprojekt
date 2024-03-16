@@ -1,8 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://filrvjjqg6ij"]
+[gd_scene load_steps=6 format=3 uid="uid://filrvjjqg6ij"]
 
+[ext_resource type="Script" path="res://game.gd" id="1_lvcbi"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://player.tscn" id="1_t5ae7"]
+[ext_resource type="PackedScene" uid="uid://dix0smnrj0j4l" path="res://roller.tscn" id="2_6op6b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
+bg_color = Color(0.113725, 0.686275, 0.356863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Curve2D" id="Curve2D_umr6q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -80, -80, 0, 0, 0, 0, -80, 750, 0, 0, 0, 0, 1250, 750, 0, 0, 0, 0, 1250, -80, 0, 0, 0, 0, -80, -80)
+}
+point_count = 5
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lvcbi")
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+offset_left = 938.0
+offset_top = 4.0
+offset_right = 1149.0
+offset_bottom = 31.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_x4d02")
+max_value = 5.0
+value = 5.0
+show_percentage = false
 
 [node name="Player" parent="." instance=ExtResource("1_t5ae7")]
 position = Vector2(600, 350)
+
+[node name="Roller" parent="." instance=ExtResource("2_6op6b")]
+position = Vector2(64, 583)
+
+[node name="Spawnpath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_umr6q")
+
+[node name="Spawnpoint" type="PathFollow2D" parent="Spawnpath"]
+position = Vector2(-80, -80)
+rotation = 1.5708
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

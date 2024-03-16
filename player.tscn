@@ -1,27 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://yja5fgu07w0"]
+[gd_scene load_steps=6 format=3 uid="uid://yja5fgu07w0"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_kl8id"]
+[ext_resource type="Script" path="res://player.gd" id="1_kl8id"]
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_205pd"]
 [ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://Stab.tscn" id="3_2rbtj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgqdj"]
-radius = 63.0714
+radius = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vki13"]
+radius = 65.0077
 
 [node name="Player" type="CharacterBody2D"]
+platform_floor_layers = 4294967040
 script = ExtResource("1_kl8id")
 
 [node name="StabDuration" type="Timer" parent="."]
 wait_time = 0.1
 
 [node name="StabCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ImmunityFrames" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="Stab" parent="." instance=ExtResource("3_2rbtj")]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wgqdj")
-
 [node name="PlayerSprite2" type="Sprite2D" parent="."]
 texture = ExtResource("2_205pd")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wgqdj")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_vki13")
+
 [connection signal="timeout" from="StabDuration" to="." method="_on_stab_duration_timeout"]
+[connection signal="timeout" from="StabCooldown" to="." method="_on_stab_cooldown_timeout"]
+[connection signal="timeout" from="ImmunityFrames" to="." method="_on_immunity_frames_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
