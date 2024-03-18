@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfhg3wvtl1jcy"]
 
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_muppg"]
-[ext_resource type="Script" path="res://Stab.gd" id="1_ngi1q"]
+[ext_resource type="Script" path="res://Stab.gd" id="1_42am0"]
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_dfb6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eq15"]
 size = Vector2(96, 191)
 
 [node name="Stab" type="Area2D"]
-script = ExtResource("1_ngi1q")
+script = ExtResource("1_42am0")
 
 [node name="StabCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 95.5)
@@ -17,6 +17,6 @@ disabled = true
 [node name="StabSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 96)
 scale = Vector2(0.75, 1.5)
-texture = ExtResource("1_muppg")
+texture = ExtResource("2_dfb6d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

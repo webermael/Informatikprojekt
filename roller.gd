@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 200.0
 var health = 2
 
 @onready var player = $/root/Game/Player

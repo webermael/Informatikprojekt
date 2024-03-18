@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_kl8id"]
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_205pd"]
-[ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://Stab.tscn" id="3_2rbtj"]
+[ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://stab.tscn" id="3_2rbtj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgqdj"]
 radius = 64.0
@@ -18,19 +18,26 @@ script = ExtResource("1_kl8id")
 wait_time = 0.1
 
 [node name="StabCooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 
 [node name="ImmunityFrames" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="BulletCooldown" type="Timer" parent="."]
+
+[node name="ShootingPivot" type="Marker2D" parent="."]
+
+[node name="ShootingPoint" type="Marker2D" parent="ShootingPivot"]
+position = Vector2(60, 0)
+
 [node name="Stab" parent="." instance=ExtResource("3_2rbtj")]
 visible = false
 
-[node name="PlayerSprite2" type="Sprite2D" parent="."]
-texture = ExtResource("2_205pd")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wgqdj")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_205pd")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -40,4 +47,5 @@ shape = SubResource("CircleShape2D_vki13")
 [connection signal="timeout" from="StabDuration" to="." method="_on_stab_duration_timeout"]
 [connection signal="timeout" from="StabCooldown" to="." method="_on_stab_cooldown_timeout"]
 [connection signal="timeout" from="ImmunityFrames" to="." method="_on_immunity_frames_timeout"]
+[connection signal="timeout" from="BulletCooldown" to="." method="_on_bullet_cooldown_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
