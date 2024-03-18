@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://filrvjjqg6ij"]
+[gd_scene load_steps=5 format=3 uid="uid://filrvjjqg6ij"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_lvcbi"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://player.tscn" id="1_t5ae7"]
-[ext_resource type="PackedScene" uid="uid://dix0smnrj0j4l" path="res://roller.tscn" id="2_6op6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
@@ -27,10 +26,17 @@ position = Vector2(960, 540)
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="Player/CanvasLayer"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 1940.0
-offset_bottom = 1100.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -980.0
+offset_top = -560.0
+offset_right = 980.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="UI_Layer" type="CanvasLayer" parent="Player"]
@@ -55,9 +61,6 @@ curve = SubResource("Curve2D_umr6q")
 [node name="Spawnpoint" type="PathFollow2D" parent="Player/Spawnpath"]
 position = Vector2(-80, -80)
 rotation = 1.5708
-
-[node name="Roller" parent="." instance=ExtResource("2_6op6b")]
-position = Vector2(1034, 237)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
