@@ -13,7 +13,7 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="Curve2D" id="Curve2D_umr6q"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -80, -80, 0, 0, 0, 0, -80, 750, 0, 0, 0, 0, 1250, 750, 0, 0, 0, 0, 1250, -80, 0, 0, 0, 0, -80, -80)
+"points": PackedVector2Array(0, 0, 0, 0, -80, -80, 0, 0, 0, 0, -80, 1160, 0, 0, 0, 0, 2000, 1160, 0, 0, 0, 0, 2000, -80, 0, 0, 0, 0, -80, -80)
 }
 point_count = 5
 
@@ -21,10 +21,10 @@ point_count = 5
 script = ExtResource("1_lvcbi")
 
 [node name="Healthbar" type="ProgressBar" parent="."]
-offset_left = 938.0
-offset_top = 4.0
-offset_right = 1149.0
-offset_bottom = 31.0
+offset_left = 1644.0
+offset_top = 7.0
+offset_right = 1914.0
+offset_bottom = 47.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_x4d02")
 max_value = 5.0
 value = 5.0
