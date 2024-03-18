@@ -37,7 +37,6 @@ offset_right = 980.0
 offset_bottom = 560.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="UI_Layer" type="CanvasLayer" parent="Player"]
 layer = 10
