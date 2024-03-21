@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player.gd" id="1_kl8id"]
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_205pd"]
-[ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://stab.tscn" id="3_2rbtj"]
+[ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://Stab.tscn" id="3_2rbtj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgqdj"]
 radius = 64.0
