@@ -1,5 +1,6 @@
 res://game.tscn
 res://player.tscn
 res://roller.tscn
-res://bullet.tscn
 res://stab.tscn
+res://bullet.tscn
+res://player.gd
