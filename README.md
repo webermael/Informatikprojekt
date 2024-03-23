@@ -1,6 +1,6 @@
-# Informatikprojekt
-## Yanis
-### Yanis 2
-### Test branching
-### Test branching 2
-### Godot is good ot
+# Informatikprojekt - Space Shooter
+## Description
+### Game Type
+### Mechanics
+### Goal
+## ... ?

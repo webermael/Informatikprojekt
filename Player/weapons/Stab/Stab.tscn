@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfhg3wvtl1jcy"]
 
-[ext_resource type="Script" path="res://Stab.gd" id="1_42am0"]
+[ext_resource type="Script" path="res://Player/weapons/Stab/Stab.gd" id="1_42am0"]
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_dfb6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eq15"]
