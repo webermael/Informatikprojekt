@@ -45,7 +45,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("ui_ranged_attack") and Bullet_Ready:
 		$ShootingPivot.rotation = Last_Movement.angle()
-		var Bullet = preload("res://bullet.tscn").instantiate() 
+		var Bullet = preload("res://Player/weapons/Bullet/Bullet.tscn").instantiate() 
 		Bullet.global_position = $ShootingPivot/ShootingPoint.global_position
 		Bullet.rotation = $ShootingPivot.rotation
 		$ShootingPivot/ShootingPoint.add_child(Bullet) 

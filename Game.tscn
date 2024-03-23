@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://filrvjjqg6ij"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_lvcbi"]
-[ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://player.tscn" id="1_t5ae7"]
-[ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://soundtrack/Main_Loop.wav" id="3_v1kur"]
+[ext_resource type="Script" path="res://Game.gd" id="1_0qqco"]
+[ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
+[ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://music/Main_Loop.wav" id="3_3tn5c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
@@ -18,9 +18,9 @@ _data = {
 point_count = 5
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_lvcbi")
+script = ExtResource("1_0qqco")
 
-[node name="Player" parent="." instance=ExtResource("1_t5ae7")]
+[node name="Player" parent="." instance=ExtResource("2_1h8cj")]
 position = Vector2(960, 540)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
@@ -67,7 +67,7 @@ wait_time = 1.5
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_v1kur")
+stream = ExtResource("3_3tn5c")
 autoplay = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
