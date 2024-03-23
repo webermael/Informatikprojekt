@@ -40,13 +40,7 @@ func move():
 	move_and_slide()
 
 
-func _process(delta):
-	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
-	
-	if input_direction.length() != 0:
-		last_movement = input_direction.angle()
-		
+func stab():
 	if Input.is_action_pressed("ui_melee_attack") and stab_ready:
 		$Stab.rotation = last_movement - PI / 2
 		$Stab.visible = true
@@ -54,7 +48,9 @@ func _process(delta):
 		stab_ready = false
 		$StabDuration.start()
 		$StabCooldown.start()
-	
+
+
+func shoot():
 	if Input.is_action_pressed("ui_ranged_attack") and bullet_ready:
 		$ShootingPivot.rotation = last_movement
 		var Bullet = preload("res://Player/weapons/Bullet/Bullet.tscn").instantiate() 
@@ -63,5 +59,14 @@ func _process(delta):
 		$ShootingPivot/ShootingPoint.add_child(Bullet) 
 		bullet_ready = false
 		$BulletCooldown.start()
+
+
+func _process(delta):
+	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
-	
+	if input_direction.length() != 0:
+		last_movement = input_direction.angle()
+		
+	stab()
+	shoot()
+	move()
