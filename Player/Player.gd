@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 const SPEED = 400.0
-var Last_Movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-var Stab_Ready = true
-var Bullet_Ready = true
+var last_movement = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+var stab_ready = true
+var bullet_ready = true
 var health = 5
 
 
@@ -13,11 +13,11 @@ func _on_stab_duration_timeout():
 
 
 func _on_stab_cooldown_timeout():
-	Stab_Ready = true
+	stab_ready = true
 
 
 func _on_bullet_cooldown_timeout():
-	Bullet_Ready = true
+	bullet_ready = true
 
 
 func _on_hitbox_body_entered(body):
@@ -39,24 +39,23 @@ func _process(delta):
 	velocity = input_direction * SPEED
 	
 	if input_direction.length() != 0:
-		Last_Movement = input_direction
+		last_movement = input_direction
 		
-	if Input.is_action_pressed("ui_melee_attack") and Stab_Ready:
-		$Stab.rotation = Last_Movement.angle() - PI / 2
+	if Input.is_action_pressed("ui_melee_attack") and stab_ready:
+		$Stab.rotation = last_movement.angle() - PI / 2
 		$Stab.visible = true
 		$Stab/StabCollision.disabled = false
-		Stab_Ready = false
+		stab_ready = false
 		$StabDuration.start()
 		$StabCooldown.start()
 	
-	if Input.is_action_pressed("ui_ranged_attack") and Bullet_Ready:
-		$ShootingPivot.rotation = Last_Movement.angle()
+	if Input.is_action_pressed("ui_ranged_attack") and bullet_ready:
+		$ShootingPivot.rotation = last_movement.angle()
 		var Bullet = preload("res://Player/weapons/Bullet/Bullet.tscn").instantiate() 
 		Bullet.global_position = $ShootingPivot/ShootingPoint.global_position
 		Bullet.rotation = $ShootingPivot.rotation
 		$ShootingPivot/ShootingPoint.add_child(Bullet) 
-		Bullet_Ready = false
+		bullet_ready = false
 		$BulletCooldown.start()
 	
 	move_and_slide()
-	
