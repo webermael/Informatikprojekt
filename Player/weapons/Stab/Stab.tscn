@@ -4,19 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_dfb6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eq15"]
-size = Vector2(96, 191)
+size = Vector2(79.5, 256)
 
 [node name="Stab" type="Area2D"]
 script = ExtResource("1_42am0")
 
 [node name="StabCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 95.5)
+position = Vector2(0, 128)
+scale = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_4eq15")
 disabled = true
 
 [node name="StabSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 96)
-scale = Vector2(0.75, 1.5)
+position = Vector2(0, 128)
+scale = Vector2(1.25, 2)
 texture = ExtResource("2_dfb6d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
