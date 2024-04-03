@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://filrvjjqg6ij"]
+[gd_scene load_steps=7 format=3 uid="uid://filrvjjqg6ij"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_0qqco"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
 [ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://music/Main_Loop.wav" id="3_3tn5c"]
+[ext_resource type="PackedScene" uid="uid://dix0smnrj0j4l" path="res://Enemies/Roller/Roller.tscn" id="4_t8ced"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
@@ -69,5 +70,8 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3tn5c")
 autoplay = true
+
+[node name="Roller" parent="." instance=ExtResource("4_t8ced")]
+position = Vector2(186, 900)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
