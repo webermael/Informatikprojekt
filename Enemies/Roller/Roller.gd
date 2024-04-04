@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 var health = 2
-const distance_for_friendship = 300
+const friendship_distance = 300
 
 @onready var player = $/root/Game/Player
 
@@ -15,7 +15,7 @@ func _physics_process(delta):
 	for entity in entities_in_vision:
 		if entity.is_in_group("Roller"):
 			rollers_in_vision.append(entity)
-		if global_position.distance_to(entity.global_position) < distance_for_friendship:
+		if global_position.distance_to(entity.global_position) < friendship_distance:
 			rollers_nearby.append(entity)
 	for roller in rollers_in_vision:
 		if roller in rollers_in_vision and roller not in rollers_nearby and rollers_nearby.size() < 3:
