@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_iineo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2l6ko"]
-radius = 64.0078
+radius = 47.3814
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eysqy"]
 radius = 518.756
@@ -14,13 +14,16 @@ platform_floor_layers = 4294967040
 script = ExtResource("1_mi4nt")
 
 [node name="RollerSprite" type="Sprite2D" parent="."]
+position = Vector2(0.111362, 0.0210764)
 rotation = 3.14159
+scale = Vector2(0.736303, 0.741872)
 texture = ExtResource("2_iineo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2l6ko")
 
 [node name="Vision" type="Area2D" parent="."]
+visible = false
 
 [node name="VisionShape" type="CollisionShape2D" parent="Vision"]
 shape = SubResource("CircleShape2D_eysqy")
