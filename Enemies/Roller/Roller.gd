@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 var health = 2
-const friendship_distance = 500
+const friendship_distance = 300
 
 @onready var player = $/root/Game/Player
 
