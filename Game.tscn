@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game.gd" id="1_0qqco"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
-[ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://music/Main_Loop.wav" id="3_3tn5c"]
+[ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://Music/Main_Loop.wav" id="3_3tn5c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
