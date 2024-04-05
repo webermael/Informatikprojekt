@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED = 600
+const SPEED = 800
 const MAX_DISTANCE = 500
 var damage = 2
 var distance_traveled = 0
@@ -19,7 +19,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Enemies"):
-		$/root/Game/Player/BulletCooldown.start()
+		$/root/Game/Player.hit_enemy = true
 		body.health -= damage
 		if body.health <= 0:
 			body.queue_free()

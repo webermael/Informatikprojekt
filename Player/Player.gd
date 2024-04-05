@@ -6,6 +6,7 @@ var last_movement = input_direction.angle()
 var stab_ready = true
 var stab_released = true
 var bullet_ready = true
+var hit_enemy = false
 var health = 5
 
 
@@ -19,7 +20,8 @@ func _on_stab_cooldown_timeout():
 
 
 func _on_bullet_cooldown_timeout():
-	bullet_ready = true
+	if hit_enemy:
+		bullet_ready = true
 
 
 func _on_hitbox_body_entered(body):
@@ -61,7 +63,9 @@ func shoot():
 		Bullet.global_position = $ShootingPivot/ShootingPoint.global_position
 		Bullet.rotation = $ShootingPivot.rotation
 		$/root/Game.add_child(Bullet) 
+		hit_enemy = false
 		bullet_ready = false
+		$BulletCooldown.start()
 
 
 func _process(delta):
