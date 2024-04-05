@@ -18,6 +18,10 @@ func _on_stab_cooldown_timeout():
 	stab_ready = true
 
 
+func _on_bullet_cooldown_timeout():
+	bullet_ready = true
+
+
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemies") and $Hitbox/HitboxCollision.scale.x == 1:
 		health -= 1
@@ -56,9 +60,8 @@ func shoot():
 		var Bullet = preload("res://Player/weapons/Bullet/Bullet.tscn").instantiate() 
 		Bullet.global_position = $ShootingPivot/ShootingPoint.global_position
 		Bullet.rotation = $ShootingPivot.rotation
-		$ShootingPivot/ShootingPoint.add_child(Bullet) 
+		$/root/Game.add_child(Bullet) 
 		bullet_ready = false
-		$BulletCooldown.start()
 
 
 func _process(delta):
@@ -70,3 +73,4 @@ func _process(delta):
 	stab()
 	shoot()
 	move()
+

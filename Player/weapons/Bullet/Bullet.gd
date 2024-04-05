@@ -19,6 +19,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Enemies"):
+		$/root/Game/Player/BulletCooldown.start()
 		body.health -= damage
 		if body.health <= 0:
 			body.queue_free()
