@@ -11,6 +11,9 @@ func _process(delta):
 	position += direction * SPEED * delta
 	distance_traveled += direction.length() * SPEED * delta
 	if distance_traveled >= MAX_DISTANCE:
+		var landed_bullet = preload("res://Player/weapons/Bullet/landed_bullet.tscn").instantiate()
+		landed_bullet.global_position = global_position
+		$/root/Game.add_child(landed_bullet)
 		queue_free()
 
 
@@ -20,3 +23,4 @@ func _on_body_entered(body):
 		if body.health <= 0:
 			body.queue_free()
 		queue_free()
+

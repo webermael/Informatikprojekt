@@ -10,7 +10,7 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vki13"]
 radius = 65.0077
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 platform_floor_layers = 4294967040
 script = ExtResource("1_kl8id")
 

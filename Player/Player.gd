@@ -18,10 +18,6 @@ func _on_stab_cooldown_timeout():
 	stab_ready = true
 
 
-func _on_bullet_cooldown_timeout():
-	bullet_ready = true
-
-
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemies") and $Hitbox/HitboxCollision.scale.x == 1:
 		health -= 1
