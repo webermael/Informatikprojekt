@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy1qd6j88acqv"]
+
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_mq6m2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpm3g"]
+size = Vector2(800, 20)
+
+[node name="BotttomWall" type="CharacterBody2D" groups=["Solid"]]
+
+[node name="BottomDoorSprite" type="Sprite2D" parent="."]
+position = Vector2(400, 1070)
+scale = Vector2(6.25001, 0.15625)
+texture = ExtResource("1_mq6m2")
+
+[node name="BottomDoorLeft" type="CollisionShape2D" parent="."]
+position = Vector2(400, 1070)
+shape = SubResource("RectangleShape2D_wpm3g")
+
+[node name="BottomDoorSprite2" type="Sprite2D" parent="."]
+position = Vector2(1520, 1070)
+scale = Vector2(6.25001, 0.15625)
+texture = ExtResource("1_mq6m2")
+
+[node name="BottomDoorRight" type="CollisionShape2D" parent="."]
+position = Vector2(1520, 1070)
+shape = SubResource("RectangleShape2D_wpm3g")

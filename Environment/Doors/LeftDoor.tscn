@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbx1324d7a2tm"]
+
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_cc1rb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqn30"]
+size = Vector2(20, 380)
+
+[node name="LeftDoor" type="CharacterBody2D" groups=["Solid"]]
+
+[node name="LeftDoorSprite" type="Sprite2D" parent="."]
+position = Vector2(10, 190)
+scale = Vector2(0.15625, 2.96875)
+texture = ExtResource("1_cc1rb")
+
+[node name="LeftDoorTop" type="CollisionShape2D" parent="."]
+position = Vector2(10, 190)
+shape = SubResource("RectangleShape2D_kqn30")
+
+[node name="LeftDoorSprite2" type="Sprite2D" parent="."]
+position = Vector2(10, 890)
+scale = Vector2(0.15625, 2.96875)
+texture = ExtResource("1_cc1rb")
+
+[node name="LeftDoorBottom" type="CollisionShape2D" parent="."]
+position = Vector2(10, 890)
+shape = SubResource("RectangleShape2D_kqn30")

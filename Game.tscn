@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://filrvjjqg6ij"]
+[gd_scene load_steps=7 format=3 uid="uid://filrvjjqg6ij"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_0qqco"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
 [ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://Music/Main_Loop.wav" id="3_3tn5c"]
+[ext_resource type="PackedScene" uid="uid://dt0lo02v02do3" path="res://dungeon.tscn" id="4_7xdti"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
@@ -20,8 +21,38 @@ point_count = 5
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0qqco")
 
+[node name="Dungeon" parent="." instance=ExtResource("4_7xdti")]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3tn5c")
+autoplay = true
+
 [node name="Player" parent="." instance=ExtResource("2_1h8cj")]
 position = Vector2(960, 540)
+
+[node name="UI_Layer" type="CanvasLayer" parent="Player"]
+layer = 10
+
+[node name="Healthbar" type="ProgressBar" parent="Player/UI_Layer"]
+offset_left = 1631.0
+offset_top = 27.0
+offset_right = 1901.0
+offset_bottom = 67.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_x4d02")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+
+[node name="Spawnpath" type="Path2D" parent="Player"]
+position = Vector2(-960, -540)
+curve = SubResource("Curve2D_umr6q")
+
+[node name="Spawnpoint" type="PathFollow2D" parent="Player/Spawnpath"]
+position = Vector2(-80, -80)
+rotation = 1.5708
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Player"]
 layer = -10
@@ -39,35 +70,7 @@ offset_bottom = 560.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UI_Layer" type="CanvasLayer" parent="Player"]
-layer = 10
-
-[node name="Healthbar" type="ProgressBar" parent="Player/UI_Layer"]
-offset_left = 1631.0
-offset_top = 27.0
-offset_right = 1901.0
-offset_bottom = 67.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_x4d02")
-max_value = 5.0
-value = 5.0
-show_percentage = false
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Spawnpath" type="Path2D" parent="Player"]
-position = Vector2(-960, -540)
-curve = SubResource("Curve2D_umr6q")
-
-[node name="Spawnpoint" type="PathFollow2D" parent="Player/Spawnpath"]
-position = Vector2(-80, -80)
-rotation = 1.5708
-
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_3tn5c")
-autoplay = true
+[node name="RoomCamera" type="Camera2D" parent="."]
+position = Vector2(960, 539)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

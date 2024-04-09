@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwqt6xp7fjrky"]
+
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_o0wpo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nwtp"]
+size = Vector2(20, 1080)
+
+[node name="LeftWall" type="CharacterBody2D" groups=["Solid"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 540)
+scale = Vector2(0.15625, 8.4375)
+texture = ExtResource("1_o0wpo")
+
+[node name="LeftWallCollision" type="CollisionShape2D" parent="."]
+position = Vector2(10, 540)
+shape = SubResource("RectangleShape2D_7nwtp")

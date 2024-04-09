@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ddjmptfdlbu"]
+
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_e5mwl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpm3g"]
+size = Vector2(1920, 20)
+
+[node name="BotttomWall" type="CharacterBody2D" groups=["Solid"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(959.999, 1070)
+scale = Vector2(15, 0.15625)
+texture = ExtResource("1_e5mwl")
+
+[node name="BottomWallCollision" type="CollisionShape2D" parent="."]
+position = Vector2(960, 1070)
+shape = SubResource("RectangleShape2D_wpm3g")

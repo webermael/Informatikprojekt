@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
+const SPEED = 750.0
 var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 var last_movement = input_direction.angle()
 var stab_ready = true
@@ -35,7 +35,7 @@ func _on_hitbox_body_entered(body):
 
 
 func _on_immunity_frames_timeout():
-		$Hitbox/HitboxCollision.scale.x = 1
+	$Hitbox/HitboxCollision.scale.x = 1
 
 
 func move():

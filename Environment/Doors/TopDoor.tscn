@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc7ctstdpb4ru"]
+
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_vcxy5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpm3g"]
+size = Vector2(800, 20)
+
+[node name="TopDoor" type="CharacterBody2D" groups=["Solid"]]
+
+[node name="TopDoorSprite" type="Sprite2D" parent="."]
+position = Vector2(400, 10)
+scale = Vector2(6.25001, 0.15625)
+texture = ExtResource("1_vcxy5")
+
+[node name="TopDoorLeft" type="CollisionShape2D" parent="."]
+position = Vector2(400, 10)
+shape = SubResource("RectangleShape2D_wpm3g")
+
+[node name="TopDoorSprite2" type="Sprite2D" parent="."]
+position = Vector2(1520, 10)
+scale = Vector2(6.25001, 0.15625)
+texture = ExtResource("1_vcxy5")
+
+[node name="TopDoorRight" type="CollisionShape2D" parent="."]
+position = Vector2(1520, 10)
+shape = SubResource("RectangleShape2D_wpm3g")

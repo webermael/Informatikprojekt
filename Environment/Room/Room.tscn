@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk8kv62gfy171"]
+
+[ext_resource type="Script" path="res://Environment/Room/Room.gd" id="1_slsk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60xs4"]
+size = Vector2(1880, 1040)
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_slsk6")
+
+[node name="CameraCenter" type="Marker2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="RoomInside" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomInside"]
+position = Vector2(960, 540)
+shape = SubResource("RectangleShape2D_60xs4")
+
+[connection signal="body_entered" from="RoomInside" to="." method="_on_room_inside_body_entered"]
