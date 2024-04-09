@@ -60,7 +60,7 @@ func generate():
 		for wall in range(4):
 			if not room.walls_placed[wall]:
 				room.place_wall(wall)
-
+	
 func _ready():
 	generate()
 
