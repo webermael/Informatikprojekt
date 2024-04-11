@@ -28,7 +28,6 @@ wait_time = 1.5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3tn5c")
-autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("2_1h8cj")]
 position = Vector2(960, 540)

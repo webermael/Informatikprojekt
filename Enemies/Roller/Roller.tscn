@@ -23,7 +23,6 @@ texture = ExtResource("2_iineo")
 shape = SubResource("CircleShape2D_2l6ko")
 
 [node name="Vision" type="Area2D" parent="."]
-visible = false
 
 [node name="VisionShape" type="CollisionShape2D" parent="Vision"]
 shape = SubResource("CircleShape2D_eysqy")

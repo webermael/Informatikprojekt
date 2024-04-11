@@ -8,7 +8,7 @@ func place_door(direction):
 	direction = direction % 4
 	var new_door = false
 	if NUMBER_DIRECTION[direction] == "up" and not walls_placed[direction]:
-		new_door = preload("res://Environment/Doors/TopDoor.tscn").instantiate()	
+		new_door = preload("res://Environment/Doors/TopDoor.tscn").instantiate()
 	elif NUMBER_DIRECTION[direction] == "right" and not walls_placed[direction]:
 		new_door = preload("res://Environment/Doors/RightDoor.tscn").instantiate()
 	elif NUMBER_DIRECTION[direction] == "down" and not walls_placed[direction]:

@@ -25,7 +25,7 @@ func pathfind(direction):
 	return direction
 
 
-func _physics_process(delta):
+func _process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	direction = pathfind(direction)
 	velocity = direction * SPEED

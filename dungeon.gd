@@ -8,7 +8,7 @@ const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
 const HEIGHT = 1080
 const WIDTH = 1920
 const ROOMS = 8
-const ROOMS_TO_FINISH = 4
+const ROOMS_TO_FINISH = 8
 
 
 func new_place(direction, new_place):
@@ -36,7 +36,7 @@ func place_room(place, direction, parent_room):
 
 func generate():
 	var first_room = preload("res://Environment/Room/Room.tscn").instantiate()
-	first_room.global_position = Vector2 (0, 0)
+	first_room.global_position = Vector2.ZERO
 	add_child(first_room)
 	rooms.append(first_room)
 	room_coordinates.append(first_room.global_position)
@@ -54,16 +54,18 @@ func generate():
 		var direction = randi() % 4
 		if new_place(direction, place) not in room_coordinates and parent_room != end_room:
 			place_room(new_place(direction, place), direction, parent_room)
-			place = new_place(direction, place)
+			
 	
 	for room in rooms:
 		for wall in range(4):
 			if not room.walls_placed[wall]:
 				room.place_wall(wall)
 	
+	
+
+	
 func _ready():
 	generate()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
