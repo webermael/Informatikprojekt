@@ -29,7 +29,7 @@ func _on_hitbox_body_entered(body):
 		health -= 1
 		$Hitbox/HitboxCollision.scale.x = 0.9
 		$ImmunityFrames.start()
-		$"UI_Layer/Healthbar".value = health
+		$UI_Layer/Healthbar.value = health
 		if health == 0:
 			get_tree().paused = true
 
