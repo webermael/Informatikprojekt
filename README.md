@@ -8,6 +8,16 @@
 #### Player(s)
 Player has 3 actions (besides normal movement): melee, ranged, movement
 [expand, explain different players ...]
+##### Gooey?
+- **Melee** 
+[right hook];
+does a long thin hit with his right arm, then for a certain amount of time, he can do another hit with the left arm to charge an attack
+- **Ranged**
+[spike!];
+throws a spike which he has stored in his belly, because he only has one, he has to collect it again for further usage
+- **Movement**
+[shwoop];
+dashes forward, becoming invincible for the duration of the dash and gaining some bonus damage afterwards
 #### Enemies
 - **Roller**
 [spike ball (?)];
@@ -21,11 +31,21 @@ Cooporate, Blocker in front, ranger in back
 - **Shock wave**
 [STOMP];
 jupms in the air and crashes down, causing a (round) shock wave
+- **Comet**
+[Comet...];
+small wimsy enemy but can summon a comet to strike down at the players position
+- **Donner**
+[knockout];
+appears only with other enemies, creates a sonic boom, which will stun the player for a short time and deals very little damage?
+- **Blitzen**
+[zap];
+spawns in groups of 3 to 4, decently low health each but high speed and no contact damage, all gather around the player, they then create a lightning between two of them which deals damage
 
 [add more enemies, explain in more detail ...]
 
 ### Game mechanics
 #### Dungeon generation
+#### Criteria for beating a dungeon
 #### Naming system
 #### Bosses / Goal / Menu ...
 [complete ...]
