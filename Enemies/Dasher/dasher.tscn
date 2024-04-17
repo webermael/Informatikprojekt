@@ -7,7 +7,7 @@
 radius = 31.5753
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c1roc"]
-radius = 220.227
+radius = 351.023
 
 [node name="Dasher" type="CharacterBody2D" groups=["Dasher", "Enemies"]]
 platform_floor_layers = 4294967040
@@ -25,8 +25,17 @@ shape = SubResource("CircleShape2D_4bs3f")
 [node name="ChargeAreaCollision" type="CollisionShape2D" parent="ChargeArea"]
 shape = SubResource("CircleShape2D_c1roc")
 
-[node name="ChargeTimer" type="Timer" parent="."]
+[node name="ChargingTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[node name="ChargeDuration" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="ChargeCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="ChargingTimer" to="." method="_on_charging_timer_timeout"]
+[connection signal="timeout" from="ChargingTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="ChargeDuration" to="." method="_on_charge_duration_timeout"]
+[connection signal="timeout" from="ChargeCooldown" to="." method="_on_charge_cooldown_timeout"]

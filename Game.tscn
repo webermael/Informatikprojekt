@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://filrvjjqg6ij"]
+[gd_scene load_steps=8 format=3 uid="uid://filrvjjqg6ij"]
 
 [ext_resource type="Script" path="res://Game.gd" id="1_0qqco"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
 [ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://Music/Main_Loop.wav" id="3_3tn5c"]
 [ext_resource type="PackedScene" uid="uid://dt0lo02v02do3" path="res://dungeon.tscn" id="4_7xdti"]
+[ext_resource type="PackedScene" uid="uid://3236gjlauddx" path="res://Enemies/Dasher/dasher.tscn" id="5_rh4tp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
@@ -28,6 +29,7 @@ wait_time = 1.5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3tn5c")
+autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("2_1h8cj")]
 position = Vector2(960, 540)
@@ -71,5 +73,8 @@ grow_vertical = 2
 
 [node name="RoomCamera" type="Camera2D" parent="."]
 position = Vector2(960, 539)
+
+[node name="Dasher" parent="." instance=ExtResource("5_rh4tp")]
+position = Vector2(241, 796)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
