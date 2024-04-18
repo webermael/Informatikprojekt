@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cln4twx13jqps"]
+
+[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_gbjy5"]
+[ext_resource type="Script" path="res://Enemies/Blitzen/blitzen.gd" id="1_h67ru"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4sref"]
+radius = 32.1403
+
+[sub_resource type="Curve2D" id="Curve2D_gd605"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -150, -150, 0, 0, 0, 0, 150, -150, 0, 0, 0, 0, 150, 150, 0, 0, 0, 0, -150, 150, 0, 0, 0, 0, -150, -150)
+}
+point_count = 5
+
+[node name="Blitzen" type="CharacterBody2D" groups=["Blitzen", "Enemies"]]
+platform_floor_layers = 4294967040
+script = ExtResource("1_h67ru")
+
+[node name="BlitzenSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_gbjy5")
+flip_v = true
+
+[node name="BlitzenCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4sref")
+
+[node name="PlayerPosition" type="Marker2D" parent="."]
+
+[node name="GroupingPath" type="Path2D" parent="PlayerPosition"]
+curve = SubResource("Curve2D_gd605")
+
+[node name="EndLocation" type="PathFollow2D" parent="PlayerPosition/GroupingPath"]
+position = Vector2(-150, -150)
