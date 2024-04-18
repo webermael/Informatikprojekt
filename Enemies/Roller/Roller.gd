@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 var health = 2
+var player_in_room = false
 const friendship_distance = 300
 
 @onready var player = $/root/Game/Player
@@ -26,11 +27,14 @@ func pathfind(direction):
 
 
 func _process(delta):
-	var direction = global_position.direction_to(player.global_position)
-	direction = pathfind(direction)
-	velocity = direction * SPEED
-	if global_position.direction_to(player.global_position)[0] > 0:
-		rotation += delta
-	elif global_position.direction_to(player.global_position)[0] <= 0:
-		rotation -= delta
+	if player_in_room:
+		var direction = global_position.direction_to(player.global_position)
+		direction = pathfind(direction)
+		velocity = direction * SPEED
+		if global_position.direction_to(player.global_position)[0] > 0:
+			rotation += delta
+		elif global_position.direction_to(player.global_position)[0] <= 0:
+			rotation -= delta
+	else:
+		velocity = Vector2.ZERO
 	move_and_slide()

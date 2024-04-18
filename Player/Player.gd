@@ -25,7 +25,7 @@ func _on_bullet_cooldown_timeout():
 
 
 func _on_hitbox_body_entered(body):
-	if body.is_in_group("Enemies") and $Hitbox/HitboxCollision.scale.x == 1:
+	if body.is_in_group("Hurtful") and $Hitbox/HitboxCollision.scale.x == 1:
 		health -= 1
 		$Hitbox/HitboxCollision.scale.x = 0.9
 		$ImmunityFrames.start()

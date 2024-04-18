@@ -18,3 +18,4 @@ position = Vector2(960, 540)
 shape = SubResource("RectangleShape2D_60xs4")
 
 [connection signal="body_entered" from="RoomInside" to="." method="_on_room_inside_body_entered"]
+[connection signal="body_exited" from="RoomInside" to="." method="_on_room_inside_body_exited"]

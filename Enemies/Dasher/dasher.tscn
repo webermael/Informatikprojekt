@@ -9,7 +9,7 @@ radius = 31.5753
 [sub_resource type="CircleShape2D" id="CircleShape2D_c1roc"]
 radius = 351.023
 
-[node name="Dasher" type="CharacterBody2D" groups=["Dasher", "Enemies"]]
+[node name="Dasher" type="CharacterBody2D" groups=["Dasher", "Enemies", "Hurtful"]]
 platform_floor_layers = 4294967040
 script = ExtResource("1_ibck1")
 

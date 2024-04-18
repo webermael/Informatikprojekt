@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
 [ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://Music/Main_Loop.wav" id="3_3tn5c"]
 [ext_resource type="PackedScene" uid="uid://dt0lo02v02do3" path="res://dungeon.tscn" id="4_7xdti"]
-[ext_resource type="PackedScene" uid="uid://3236gjlauddx" path="res://Enemies/Dasher/dasher.tscn" id="5_rh4tp"]
+[ext_resource type="PackedScene" uid="uid://cln4twx13jqps" path="res://Enemies/Blitzen/Blitzen.tscn" id="5_wkp4m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4d02"]
 bg_color = Color(0.113725, 0.686275, 0.356863, 1)
@@ -74,7 +74,16 @@ grow_vertical = 2
 [node name="RoomCamera" type="Camera2D" parent="."]
 position = Vector2(960, 539)
 
-[node name="Dasher" parent="." instance=ExtResource("5_rh4tp")]
-position = Vector2(241, 796)
+[node name="Blitzen" parent="." instance=ExtResource("5_wkp4m")]
+position = Vector2(249, 848)
+
+[node name="Blitzen2" parent="." instance=ExtResource("5_wkp4m")]
+position = Vector2(335, 568)
+
+[node name="Blitzen4" parent="." instance=ExtResource("5_wkp4m")]
+position = Vector2(1313, 841)
+
+[node name="Blitzen3" parent="." instance=ExtResource("5_wkp4m")]
+position = Vector2(1618, 257)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
