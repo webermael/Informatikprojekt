@@ -2,8 +2,8 @@ extends Node2D
 
 const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
 var walls_placed = {0 : false, 1 : false, 2 : false, 3 : false}
-const BLITZEN_RATIOS = {0 : 0, 1 : 0.5, 2 : 0.25, 3 : 0.75}
-var blitzen_in_room = 0
+var enemies_in_room = Array ()
+@onready var spawnpoints = [$Spawnpoint1, $Spawnpoint2, $Spawnpoint3, $Spawnpoint4, $Spawnpoint5]
 
 
 func place_door(direction):
@@ -38,6 +38,20 @@ func place_wall(direction):
 		walls_placed[direction] = true
 
 
+func spawn_enemy():
+	while enemies_in_room.size() < randi() % 2 + 2:
+		var new_enemy = preload("res://Enemies/Roller/Roller.tscn").instantiate()
+		var spawnpoint = randi() % spawnpoints.size()
+		new_enemy.position = spawnpoints[spawnpoint].position
+		new_enemy.spawnposition = spawnpoints[spawnpoint].position
+		spawnpoints.remove_at(spawnpoint)
+		add_child(new_enemy)
+		enemies_in_room.append(new_enemy)
+
+
+func enemy_died(enemy):
+	enemies_in_room.erase(enemy)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -51,19 +65,12 @@ func _process(delta):
 func _on_room_inside_body_entered(body):
 	if body.is_in_group("Player"):
 		$/root/Game/RoomCamera.global_position = $CameraCenter.global_position
-		blitzen_in_room = 0
-		for entity in $RoomInside.get_overlapping_bodies():
-			if entity.is_in_group("Enemies"):
-				entity.player_in_room = true
-			if entity.is_in_group("Blitzen"):
-				entity.blitzen_position = BLITZEN_RATIOS[blitzen_in_room]
-				blitzen_in_room += 1
-
-
-
+		for enemy in enemies_in_room:
+			enemy.player_in_room = true
+			enemy.position = enemy.spawnposition
+			
 
 func _on_room_inside_body_exited(body):
 	if body.is_in_group("Player"):
-		for entity in $RoomInside.get_overlapping_bodies():
-			if entity.is_in_group("Enemies"):
-				entity.player_in_room = false
+		for enemy in enemies_in_room:
+			enemy.player_in_room = false

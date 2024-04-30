@@ -24,6 +24,7 @@ func _on_body_entered(body):
 		$/root/Game/Player.hit_enemy = true
 		body.health -= damage
 		if body.health <= 0:
+			body.get_parent().enemy_died(body)
 			body.queue_free()
 		queue_free()
 	if body.is_in_group("Solid"):

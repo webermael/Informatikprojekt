@@ -47,6 +47,7 @@ func generate():
 			place_room(new_place(direction, place), direction, rooms[-1])
 			place = new_place(direction, place)
 	
+	var start_room = rooms[0]
 	var end_room = rooms[-1]
 	while rooms_placed < ROOMS:
 		var parent_room = rooms[randi() % (rooms.size() - 1) + 1]
@@ -61,6 +62,9 @@ func generate():
 			if not room.walls_placed[wall]:
 				room.place_wall(wall)
 	
+	for room in rooms:
+		if room != start_room and room != end_room:
+			room.spawn_enemy()
 	
 
 	

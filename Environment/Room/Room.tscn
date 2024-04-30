@@ -17,5 +17,20 @@ position = Vector2(960, 540)
 position = Vector2(960, 540)
 shape = SubResource("RectangleShape2D_60xs4")
 
+[node name="Spawnpoint1" type="Marker2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Spawnpoint2" type="Marker2D" parent="."]
+position = Vector2(480, 270)
+
+[node name="Spawnpoint3" type="Marker2D" parent="."]
+position = Vector2(1480, 270)
+
+[node name="Spawnpoint4" type="Marker2D" parent="."]
+position = Vector2(480, 810)
+
+[node name="Spawnpoint5" type="Marker2D" parent="."]
+position = Vector2(1480, 810)
+
 [connection signal="body_entered" from="RoomInside" to="." method="_on_room_inside_body_entered"]
 [connection signal="body_exited" from="RoomInside" to="." method="_on_room_inside_body_exited"]
