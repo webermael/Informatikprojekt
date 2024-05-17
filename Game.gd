@@ -7,6 +7,3 @@ func spawn_enemy():
 	new_enemy.global_position = $Player/Spawnpath/Spawnpoint.global_position
 	add_child(new_enemy)
 
-
-func _on_spawn_timer_timeout():
-	spawn_enemy()

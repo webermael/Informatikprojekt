@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://yja5fgu07w0"]
+[gd_scene load_steps=7 format=3 uid="uid://yja5fgu07w0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_kl8id"]
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_205pd"]
@@ -9,6 +9,13 @@ radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vki13"]
 radius = 65.0077
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcu8v"]
+bg_color = Color(0.113725, 0.686275, 0.356863, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 platform_floor_layers = 4294967040
@@ -45,6 +52,35 @@ texture = ExtResource("2_205pd")
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_vki13")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -980.0
+offset_top = -560.0
+offset_right = 980.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Healthbar" type="ProgressBar" parent="UI_Layer"]
+offset_left = 1631.0
+offset_top = 27.0
+offset_right = 1901.0
+offset_bottom = 67.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_qcu8v")
+max_value = 5.0
+value = 5.0
+show_percentage = false
 
 [connection signal="timeout" from="StabDuration" to="." method="_on_stab_duration_timeout"]
 [connection signal="timeout" from="StabCooldown" to="." method="_on_stab_cooldown_timeout"]
