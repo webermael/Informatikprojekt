@@ -15,6 +15,8 @@ var spawnposition = Vector2.ZERO
 
 @onready var player = $/root/Game/Player
 
+
+# checks the current state of movement and moves the dasher accordingly
 func _process(delta):
 	if player_in_room:
 		direction += player_weight * global_position.direction_to(player.global_position)
@@ -38,6 +40,7 @@ func _process(delta):
 	move_and_slide()
 
 
+# increases the speed after charging, making the dasher less attracted to the player
 func _on_charging_timer_timeout():
 	charging_ratio = 1
 	charge_ratio = 2.5
@@ -47,9 +50,11 @@ func _on_charging_timer_timeout():
 	$ChargeCooldown.start()
 
 
+# changes a variable, indicating that the charge attack is over
 func _on_charge_duration_timeout():
 	is_charging = false
 
 
+# gives back the ability to dash
 func _on_charge_cooldown_timeout():
 	charge_ready = true

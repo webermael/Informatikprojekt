@@ -10,20 +10,24 @@ var hit_enemy = false
 var health = 5
 
 
+# Toggling off the stab sprite after a certain time frame
 func _on_stab_duration_timeout():
 	$Stab.visible = false
 	$Stab/StabCollision.disabled = true
 
 
+# making the stab available again
 func _on_stab_cooldown_timeout():
 	stab_ready = true
 
 
+# making the ranged attack available again
 func _on_bullet_cooldown_timeout():
 	if hit_enemy:
 		bullet_ready = true
 
 
+# take damage if an enemie touches the players hitbox
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Hurtful") and $Hitbox/HitboxCollision.scale.x == 1:
 		health -= 1
@@ -34,15 +38,18 @@ func _on_hitbox_body_entered(body):
 			get_tree().paused = true
 
 
+# making the player vulnerable to damage again after being hit
 func _on_immunity_frames_timeout():
 	$Hitbox/HitboxCollision.scale.x = 1
 
 
+# Moving the player according to the input direction
 func move():
 	velocity = input_direction * SPEED
 	move_and_slide()
 
 
+# check if the player is pressing the stab button and innitiates a stab in the direction of the player's current movement
 func stab():
 	if Input.is_action_pressed("ui_melee_attack") and stab_ready and stab_released:
 		$Stab.rotation = last_movement - PI / 2
@@ -56,6 +63,7 @@ func stab():
 		stab_released = true
 
 
+# checks if the player is pressing the ranged attack button and shoots a bullet in the direction of movement
 func shoot():
 	if Input.is_action_pressed("ui_ranged_attack") and bullet_ready:
 		$ShootingPivot.rotation = last_movement
@@ -68,6 +76,7 @@ func shoot():
 		$BulletCooldown.start()
 
 
+# called every frame that handles attacks and movement
 func _process(delta):
 	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	

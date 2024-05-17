@@ -64,7 +64,7 @@ func generate():
 	
 	for room in rooms:
 		if room != start_room and room != end_room:
-			room.spawn_enemy()
+			room.spawn_enemy(1, 2)
 	
 
 	
