@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckvlvqlm8fxqh"]
 
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_o8c0c"]
-[ext_resource type="Script" path="res://Player/weapons/Bullet/landed_bullet.gd" id="2_ftj87"]
+[ext_resource type="Script" path="res://Player/weapons/Bullet/Landed_bullet.gd" id="2_ftj87"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b38px"]
 radius = 64.4981
