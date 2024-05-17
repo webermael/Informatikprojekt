@@ -1,7 +1,7 @@
 extends Area2D
 
-const SPEED = 1000
-const MAX_DISTANCE = 500
+const SPEED = 1200
+const MAX_DISTANCE = 600
 var damage = 2
 var distance_traveled = 0
 

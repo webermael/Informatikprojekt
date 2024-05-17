@@ -43,7 +43,7 @@ func place_wall(direction):
 # spawns a random amount of enemies (between the two parameters) at one of five random locations if it is unoccupied
 func spawn_enemy(min_enemies, max_enemies):
 	var tries = 0
-	while enemies_in_room.size() < randi() % (max_enemies - min_enemies) + min_enemies and tries < 100:
+	while enemies_in_room.size() < randi() % (max_enemies - min_enemies + 1) + min_enemies and tries < 100:
 		var new_enemy = preload("res://Enemies/Roller/Roller.tscn").instantiate()
 		var spawnpoint = randi() % spawnpoints.size()
 		new_enemy.position = spawnpoints[spawnpoint].position
