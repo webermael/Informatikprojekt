@@ -1,6 +1,7 @@
 extends Node2D
 
 const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
+var enemy_pool = [preload("res://Enemies/Roller/Roller.tscn"), preload("res://Enemies/Dasher/Dasher.tscn")]
 var walls_placed = {0 : false, 1 : false, 2 : false, 3 : false}
 var enemies_in_room = Array ()
 @onready var spawnpoints = [$Spawnpoint1, $Spawnpoint2, $Spawnpoint3, $Spawnpoint4, $Spawnpoint5]
@@ -40,24 +41,19 @@ func place_wall(direction):
 		walls_placed[direction] = true
 
 
-# spawns a random amount of enemies (between the two parameters) at one of five random locations if it is unoccupied
+# spawns a random amount of randomly chosen enemies (between the two parameters) at one of five random locations if it is unoccupied
 func spawn_enemy(min_enemies, max_enemies):
 	var tries = 0
 	while enemies_in_room.size() < randi() % (max_enemies - min_enemies + 1) + min_enemies and tries < 100:
-		var enemy_type = randi() % 2
-		var new_enemy = false
-		if enemy_type == 0:
-			new_enemy = preload("res://Enemies/Roller/Roller.tscn").instantiate()
-		else:
-			new_enemy = preload("res://Enemies/Dasher/Dasher.tscn").instantiate()
-		if new_enemy:
-			var spawnpoint = randi() % spawnpoints.size()
-			new_enemy.position = spawnpoints[spawnpoint].position
-			new_enemy.spawnposition = spawnpoints[spawnpoint].position
-			spawnpoints.remove_at(spawnpoint)
-			add_child(new_enemy)
-			enemies_in_room.append(new_enemy)
-			tries += 1
+		var enemy_type = randi() % enemy_pool.size()
+		var new_enemy = enemy_pool[enemy_type].instantiate()
+		var spawnpoint = randi() % spawnpoints.size()
+		new_enemy.position = spawnpoints[spawnpoint].position
+		new_enemy.spawnposition = spawnpoints[spawnpoint].position
+		spawnpoints.remove_at(spawnpoint)
+		add_child(new_enemy)
+		enemies_in_room.append(new_enemy)
+		tries += 1
 
 
 # removes any enemie that died from the list of enemies in the room
