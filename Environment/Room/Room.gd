@@ -44,14 +44,20 @@ func place_wall(direction):
 func spawn_enemy(min_enemies, max_enemies):
 	var tries = 0
 	while enemies_in_room.size() < randi() % (max_enemies - min_enemies + 1) + min_enemies and tries < 100:
-		var new_enemy = preload("res://Enemies/Roller/Roller.tscn").instantiate()
-		var spawnpoint = randi() % spawnpoints.size()
-		new_enemy.position = spawnpoints[spawnpoint].position
-		new_enemy.spawnposition = spawnpoints[spawnpoint].position
-		spawnpoints.remove_at(spawnpoint)
-		add_child(new_enemy)
-		enemies_in_room.append(new_enemy)
-		tries += 1
+		var enemy_type = randi() % 2
+		var new_enemy = false
+		if enemy_type == 0:
+			new_enemy = preload("res://Enemies/Roller/Roller.tscn").instantiate()
+		else:
+			new_enemy = preload("res://Enemies/Dasher/Dasher.tscn").instantiate()
+		if new_enemy:
+			var spawnpoint = randi() % spawnpoints.size()
+			new_enemy.position = spawnpoints[spawnpoint].position
+			new_enemy.spawnposition = spawnpoints[spawnpoint].position
+			spawnpoints.remove_at(spawnpoint)
+			add_child(new_enemy)
+			enemies_in_room.append(new_enemy)
+			tries += 1
 
 
 # removes any enemie that died from the list of enemies in the room
