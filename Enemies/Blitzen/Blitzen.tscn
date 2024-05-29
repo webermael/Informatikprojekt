@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cln4twx13jqps"]
 
 [ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_gbjy5"]
-[ext_resource type="Script" path="res://Enemies/Blitzen/blitzen.gd" id="1_h67ru"]
+[ext_resource type="Script" path="res://Enemies/Blitzen/Blitzen.gd" id="1_h67ru"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sref"]
 radius = 32.1403
