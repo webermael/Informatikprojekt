@@ -43,8 +43,7 @@ func place_wall(direction):
 
 # spawns a random amount of randomly chosen enemies (between the two parameters) at one of five random locations if it is unoccupied
 func spawn_enemy(min_enemies, max_enemies):
-	var tries = 0
-	while enemies_in_room.size() < randi() % (max_enemies - min_enemies + 1) + min_enemies and tries < 100:
+	while enemies_in_room.size() < randi() % (max_enemies - min_enemies + 1) + min_enemies and spawnpoints.size() > 0:
 		var enemy_type = randi() % enemy_pool.size()
 		var new_enemy = enemy_pool[enemy_type].instantiate()
 		var spawnpoint = randi() % spawnpoints.size()
@@ -53,7 +52,6 @@ func spawn_enemy(min_enemies, max_enemies):
 		spawnpoints.remove_at(spawnpoint)
 		add_child(new_enemy)
 		enemies_in_room.append(new_enemy)
-		tries += 1
 
 
 # removes any enemie that died from the list of enemies in the room

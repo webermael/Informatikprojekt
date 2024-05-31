@@ -61,7 +61,6 @@ func generate():
 		var direction = randi() % 4
 		if new_place(direction, place) not in room_coordinates and parent_room != end_room:
 			place_room(new_place(direction, place), direction, parent_room)
-	
 	# closes off all the rooms with walls, where there isn't already a entryway
 	for room in rooms:
 		for wall in range(4):
@@ -70,7 +69,7 @@ func generate():
 	# spawns a number of enemies in all the rooms except for the first and last room
 	for room in rooms:
 		if room != start_room and room != end_room:
-			room.spawn_enemy(1, 2)
+			room.spawn_enemy(2, 4)
 
 
 # called as soon as the dungeon is loaded, after which it generates all of the rooms
