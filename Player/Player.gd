@@ -29,11 +29,17 @@ func _on_bullet_cooldown_timeout():
 
 # take damage if an enemie touches the players hitbox
 func _on_hitbox_body_entered(body):
+	if health >=3:
+		$UI_Layer/Healthbar.modulate = Color.GREEN
 	if body.is_in_group("Hurtful") and $Hitbox/HitboxCollision.scale.x == 1:
 		health -= 1
 		$Hitbox/HitboxCollision.scale.x = 0.9
 		$ImmunityFrames.start()
 		$UI_Layer/Healthbar.value = health
+		
+		
+		if health < 3:
+			$UI_Layer/Healthbar.modulate = Color.RED
 		if health == 0:
 			get_tree().paused = true
 

@@ -10,12 +10,12 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vki13"]
 radius = 65.0077
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcu8v"]
-bg_color = Color(0.113725, 0.686275, 0.356863, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73jjb"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 platform_floor_layers = 4294967040
@@ -73,14 +73,14 @@ grow_vertical = 2
 layer = 10
 
 [node name="Healthbar" type="ProgressBar" parent="UI_Layer"]
-offset_left = 1631.0
-offset_top = 27.0
-offset_right = 1901.0
-offset_bottom = 67.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_qcu8v")
+offset_left = 1633.0
+offset_top = 26.0
+offset_right = 1911.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_73jjb")
 max_value = 5.0
 value = 5.0
-show_percentage = false
 
 [connection signal="timeout" from="StabDuration" to="." method="_on_stab_duration_timeout"]
 [connection signal="timeout" from="StabCooldown" to="." method="_on_stab_cooldown_timeout"]
