@@ -52,7 +52,6 @@ func move():
 		$PlayerSprite.flip_h = true
 	move_and_slide()
 
-
 # check if the player is pressing the stab button and innitiates a stab in the direction of the player's current movement
 func stab():
 	if Input.is_action_pressed("ui_melee_attack") and stab_ready and stab_released:
