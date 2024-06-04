@@ -22,6 +22,10 @@ func _process(delta):
 		direction += player_weight * global_position.direction_to(player.global_position)
 		direction /= direction.length()
 		velocity = direction * SPEED * charge_ratio * charging_ratio
+		if global_position.direction_to(player.global_position)[0] > 0:
+			$DasherSprite.flip_h = true
+		elif global_position.direction_to(player.global_position)[0] <= 0:
+			$DasherSprite.flip_h = false
 		if not is_charging and charge_ratio >= 1:
 			charge_ratio -= delta * CHARGE_DECELERATION
 		elif charge_ratio < 1:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://3236gjlauddx"]
+[gd_scene load_steps=7 format=3 uid="uid://3236gjlauddx"]
 
 [ext_resource type="Script" path="res://Enemies/Dasher/Dasher.gd" id="1_ibck1"]
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_hvejj"]
+[ext_resource type="Texture2D" uid="uid://c2qry4opmjm2g" path="res://Enemies/Dasher/Dasher-Sheet.png" id="2_d27j1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4bs3f"]
 radius = 31.5753
@@ -9,13 +9,36 @@ radius = 31.5753
 [sub_resource type="CircleShape2D" id="CircleShape2D_c1roc"]
 radius = 351.023
 
+[sub_resource type="Animation" id="Animation_x5a7x"]
+resource_name = "Fly"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DasherSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2ju7w"]
+_data = {
+"Fly": SubResource("Animation_x5a7x")
+}
+
 [node name="Dasher" type="CharacterBody2D" groups=["Dasher", "Enemies", "Hurtful"]]
 platform_floor_layers = 4294967040
 script = ExtResource("1_ibck1")
 
 [node name="DasherSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_hvejj")
+texture = ExtResource("2_d27j1")
+hframes = 4
 
 [node name="DasherBody" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4bs3f")
@@ -35,7 +58,13 @@ wait_time = 0.4
 [node name="ChargeCooldown" type="Timer" parent="."]
 wait_time = 3.0
 
-[connection signal="timeout" from="ChargingTimer" to="." method="_on_charge_timer_timeout"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2ju7w")
+}
+autoplay = "Fly"
+
 [connection signal="timeout" from="ChargingTimer" to="." method="_on_charging_timer_timeout"]
+[connection signal="timeout" from="ChargingTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="timeout" from="ChargeDuration" to="." method="_on_charge_duration_timeout"]
 [connection signal="timeout" from="ChargeCooldown" to="." method="_on_charge_cooldown_timeout"]
