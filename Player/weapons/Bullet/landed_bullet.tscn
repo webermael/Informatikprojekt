@@ -1,17 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://ckvlvqlm8fxqh"]
 
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_o8c0c"]
+[ext_resource type="Texture2D" uid="uid://b25qpnsl3chiy" path="res://Player/weapons/Bullet/projectile in the ground.png" id="1_8o2rv"]
 [ext_resource type="Script" path="res://Player/weapons/Bullet/landed_bullet.gd" id="2_ftj87"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b38px"]
 radius = 64.4981
 
 [node name="LandedSprite" type="Sprite2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_o8c0c")
+position = Vector2(1.54972e-06, -22)
+rotation = 4.71239
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_8o2rv")
 script = ExtResource("2_ftj87")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(2.24534, 5.17871)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_b38px")

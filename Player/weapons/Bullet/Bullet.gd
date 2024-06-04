@@ -7,9 +7,11 @@ var distance_traveled = 0
 
 
 # deletes the midair bullet and instead places the landed bullet object, which can be picked up to reload the ranged attack
-func land():
+func land(direction = 1):
 		var landed_bullet = preload("res://Player/weapons/Bullet/landed_bullet.tscn").instantiate()
 		landed_bullet.global_position = global_position
+		if direction > 0:
+			landed_bullet.flip_v = true
 		$/root/Game.add_child(landed_bullet)
 		queue_free()
 
@@ -20,8 +22,7 @@ func _process(delta):
 	position += direction * SPEED * delta
 	distance_traveled += direction.length() * SPEED * delta
 	if distance_traveled >= MAX_DISTANCE:
-		land()
-
+		land(direction[0])
 
 # handles collision, damaging enemies on collision and landing when hitting a wall
 func _on_body_entered(body):

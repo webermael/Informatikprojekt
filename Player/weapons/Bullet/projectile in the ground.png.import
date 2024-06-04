@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxsfvwp2hxycf"
-path="res://.godot/imported/Dasher-Sheet.png-30736865e9356d6156ae7d839c4f6190.ctex"
+uid="uid://b25qpnsl3chiy"
+path="res://.godot/imported/projectile in the ground.png-13564776abff7059f4a35f28e73e4078.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Dasher/Dasher-Sheet.png"
-dest_files=["res://.godot/imported/Dasher-Sheet.png-30736865e9356d6156ae7d839c4f6190.ctex"]
+source_file="res://Player/weapons/Bullet/projectile in the ground.png"
+dest_files=["res://.godot/imported/projectile in the ground.png-13564776abff7059f4a35f28e73e4078.ctex"]
 
 [params]
 
