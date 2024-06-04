@@ -46,6 +46,10 @@ func _on_immunity_frames_timeout():
 # Moving the player according to the input direction
 func move():
 	velocity = input_direction * SPEED
+	if velocity[0] < 0:
+		$PlayerSprite.flip_h = false
+	elif velocity[0] > 0:
+		$PlayerSprite.flip_h = true
 	move_and_slide()
 
 
