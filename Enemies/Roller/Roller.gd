@@ -14,9 +14,9 @@ func _process(delta):
 		var direction = global_position.direction_to(player.global_position)
 		velocity = direction * SPEED
 		if global_position.direction_to(player.global_position)[0] > 0:
-			rotation += delta
+			$RollerSprite.flip_h = true
 		elif global_position.direction_to(player.global_position)[0] <= 0:
-			rotation -= delta
+			$RollerSprite.flip_h = false
 	else:
 		velocity = Vector2.ZERO
 	move_and_slide()
