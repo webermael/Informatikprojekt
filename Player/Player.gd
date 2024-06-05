@@ -25,6 +25,7 @@ func _on_stab_cooldown_timeout():
 func _on_bullet_cooldown_timeout():
 	if hit_enemy:
 		bullet_ready = true
+		$PlayerSprite.texture = load("res://Player/Slime full.png")
 
 
 # take damage if an enemie touches the players hitbox
@@ -55,6 +56,10 @@ func move():
 # check if the player is pressing the stab button and innitiates a stab in the direction of the player's current movement
 func stab():
 	if Input.is_action_pressed("ui_melee_attack") and stab_ready and stab_released:
+		if last_movement > PI / 2 and last_movement < 1.5 * PI:
+			$Stab/StabSprite.flip_v = false
+		else:
+			$Stab/StabSprite.flip_v = true
 		$Stab.rotation = last_movement - PI / 2
 		$Stab.visible = true
 		$Stab/StabCollision.disabled = false
@@ -77,6 +82,7 @@ func shoot():
 		hit_enemy = false
 		bullet_ready = false
 		$BulletCooldown.start()
+		$PlayerSprite.texture = load("res://Player/Slime empty.png")
 
 
 # called every frame that handles attacks and movement

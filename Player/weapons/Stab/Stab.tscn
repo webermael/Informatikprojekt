@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfhg3wvtl1jcy"]
 
 [ext_resource type="Script" path="res://Player/weapons/Stab/Stab.gd" id="1_42am0"]
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_dfb6d"]
+[ext_resource type="Texture2D" uid="uid://c2w1b1mvdyriw" path="res://Player/weapons/Stab/Stab.png" id="2_7iwlp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eq15"]
 size = Vector2(79.5, 256)
@@ -16,8 +16,9 @@ shape = SubResource("RectangleShape2D_4eq15")
 disabled = true
 
 [node name="StabSprite" type="Sprite2D" parent="."]
-position = Vector2(0, 128)
-scale = Vector2(1.25, 2)
-texture = ExtResource("2_dfb6d")
+position = Vector2(0, 114.565)
+rotation = -1.5708
+scale = Vector2(1.137, 1)
+texture = ExtResource("2_7iwlp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
