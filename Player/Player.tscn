@@ -46,7 +46,7 @@ visible = false
 shape = SubResource("CircleShape2D_wgqdj")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -41)
+position = Vector2(0, -13)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_cwi6v")
 

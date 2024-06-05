@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfk0o830nrn4s"]
 
 [ext_resource type="Script" path="res://Player/weapons/Bullet/Bullet.gd" id="1_emcdc"]
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="2_ry5j0"]
+[ext_resource type="Texture2D" uid="uid://dmsbmdkvwcek0" path="res://Player/weapons/Bullet/projetile on the fly.png" id="2_7lktw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evrt4"]
 radius = 20.025
@@ -11,9 +11,10 @@ top_level = true
 script = ExtResource("1_emcdc")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
-position = Vector2(-18.5, -2.86102e-06)
-scale = Vector2(0.601562, 0.3125)
-texture = ExtResource("2_ry5j0")
+position = Vector2(-23.5, -2)
+rotation = 2.75238
+scale = Vector2(1.25, 0.65)
+texture = ExtResource("2_7lktw")
 
 [node name="BulletCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_evrt4")
