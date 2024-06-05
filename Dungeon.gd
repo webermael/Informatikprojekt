@@ -4,6 +4,7 @@ var rooms = Array ()
 var room_coordinates = Array ()
 var place = Vector2.ZERO
 var rooms_placed = 0
+var current_room = false
 const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
 const HEIGHT = 1080
 const WIDTH = 1920
@@ -76,3 +77,9 @@ func generate():
 func _ready():
 	generate()
 
+
+# once the player dies, tells all the enemies in the room to stop moving and stops their animation
+func _on_player_player_died():
+	for enemy in current_room.enemies_in_room:
+		enemy.player_in_room = false
+		enemy.get_node("AnimationPlayer").active = false

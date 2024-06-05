@@ -8,6 +8,7 @@ var stab_released = true
 var bullet_ready = true
 var hit_enemy = false
 var health = 5
+signal player_died
 
 
 # Toggling off the stab sprite after a certain time frame
@@ -36,7 +37,8 @@ func _on_hitbox_body_entered(body):
 		$ImmunityFrames.start()
 		$UI_Layer/Healthbar.value = health
 		if health == 0:
-			get_tree().paused = true
+			player_died.emit()
+			#get_tree().paused = true
 
 
 # making the player vulnerable to damage again after being hit
@@ -91,8 +93,8 @@ func _process(delta):
 	
 	if input_direction.length() != 0:
 		last_movement = input_direction.angle()
-		
-	stab()
-	shoot()
-	move()
+	if health > 0:
+		stab()
+		shoot()
+		move()
 

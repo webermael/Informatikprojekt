@@ -63,6 +63,7 @@ func enemy_died(enemy):
 func _on_room_inside_body_entered(body):
 	if body.is_in_group("Player"):
 		$/root/Game/RoomCamera.global_position = $CameraCenter.global_position
+		get_parent().current_room = self
 		for enemy in enemies_in_room:
 			enemy.player_in_room = true
 			enemy.position = enemy.spawnposition

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game.gd" id="1_0qqco"]
 [ext_resource type="PackedScene" uid="uid://yja5fgu07w0" path="res://Player/Player.tscn" id="2_1h8cj"]
-[ext_resource type="AudioStream" uid="uid://b27y1kso8wsfm" path="res://Music/Main_Loop.wav" id="3_3tn5c"]
+[ext_resource type="AudioStream" uid="uid://bhrwpvvdyk6sk" path="res://Music/Main.mp3" id="3_ebuk6"]
 [ext_resource type="PackedScene" uid="uid://dt0lo02v02do3" path="res://Dungeon.tscn" id="4_7xdti"]
 
 [node name="Game" type="Node2D"]
@@ -11,7 +11,7 @@ script = ExtResource("1_0qqco")
 [node name="Dungeon" parent="." instance=ExtResource("4_7xdti")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_3tn5c")
+stream = ExtResource("3_ebuk6")
 autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("2_1h8cj")]
@@ -19,3 +19,5 @@ position = Vector2(960, 540)
 
 [node name="RoomCamera" type="Camera2D" parent="."]
 position = Vector2(960, 539)
+
+[connection signal="player_died" from="Player" to="Dungeon" method="_on_player_player_died"]
