@@ -4,6 +4,7 @@ const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
 var enemy_pool = [preload("res://Enemies/Roller/Roller.tscn"), preload("res://Enemies/Dasher/Dasher.tscn")]
 var walls_placed = {0 : false, 1 : false, 2 : false, 3 : false}
 var enemies_in_room = Array ()
+
 @onready var spawnpoints = [$Spawnpoint1, $Spawnpoint2, $Spawnpoint3, $Spawnpoint4, $Spawnpoint5]
 
 
@@ -57,6 +58,8 @@ func spawn_enemy(min_enemies, max_enemies):
 # removes any enemie that died from the list of enemies in the room
 func enemy_died(enemy):
 	enemies_in_room.erase(enemy)
+	if enemies_in_room.size() <= 0:
+		get_parent().room_cleared.emit()
 
 
 # moves the camera to the room the player has entered, also tells all enemies in the room that the player has entered
@@ -64,6 +67,8 @@ func _on_room_inside_body_entered(body):
 	if body.is_in_group("Player"):
 		$/root/Game/RoomCamera.global_position = $CameraCenter.global_position
 		get_parent().current_room = self
+		if enemies_in_room.size() > 0:
+			get_parent().room_entered.emit()
 		for enemy in enemies_in_room:
 			enemy.player_in_room = true
 			enemy.position = enemy.spawnposition

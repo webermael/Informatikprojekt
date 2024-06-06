@@ -10,7 +10,8 @@ const HEIGHT = 1080
 const WIDTH = 1920
 const ROOMS = 8
 const ROOMS_TO_FINISH = 8
-
+signal room_cleared
+signal room_entered
 
 # returns the coordinates of a location that is one screensize into the direction given
 func new_place(direction, new_place):
