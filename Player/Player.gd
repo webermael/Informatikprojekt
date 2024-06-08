@@ -37,8 +37,8 @@ func _on_hitbox_body_entered(body):
 		$ImmunityFrames.start()
 		$UI_Layer/Healthbar.value = health
 		if health == 0:
+			$AnimationPlayer.active = false
 			player_died.emit()
-			#get_tree().paused = true
 
 
 # making the player vulnerable to damage again after being hit

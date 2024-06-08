@@ -1,26 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdcdyreo70ln1"]
 
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_u0j2t"]
+[ext_resource type="Texture2D" uid="uid://cxar876egh3lo" path="res://Environment/Doors/TileDoorRight.png" id="2_qr885"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqn30"]
-size = Vector2(20, 380)
+size = Vector2(87.8917, 400)
 
 [node name="RightDoor" type="CharacterBody2D" groups=["Solid"]]
 
 [node name="RightDoorSprite" type="Sprite2D" parent="."]
-position = Vector2(1910, 190)
-scale = Vector2(0.15625, 2.96875)
-texture = ExtResource("1_u0j2t")
+z_index = -1
+position = Vector2(1878, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qr885")
 
 [node name="RightDoorTop" type="CollisionShape2D" parent="."]
-position = Vector2(1910, 190)
+position = Vector2(1877.63, 180)
+scale = Vector2(0.97, 0.9)
 shape = SubResource("RectangleShape2D_kqn30")
 
-[node name="RightDoorSprite2" type="Sprite2D" parent="."]
-position = Vector2(1910, 890)
-scale = Vector2(0.15625, 2.96875)
-texture = ExtResource("1_u0j2t")
-
 [node name="RightDoorBottom" type="CollisionShape2D" parent="."]
-position = Vector2(1910, 890)
+position = Vector2(1878, 878)
+scale = Vector2(0.97, 1.015)
 shape = SubResource("RectangleShape2D_kqn30")
