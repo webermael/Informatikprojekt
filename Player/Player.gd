@@ -26,7 +26,7 @@ func _on_stab_cooldown_timeout():
 func _on_bullet_cooldown_timeout():
 	if hit_enemy:
 		bullet_ready = true
-		$PlayerSprite.texture = load("res://Player/Slime full.png")
+		$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
 
 
 # take damage if an enemie touches the players hitbox
@@ -49,11 +49,16 @@ func _on_immunity_frames_timeout():
 # Moving the player according to the input direction
 func move():
 	velocity = input_direction * SPEED
+	if velocity.length() != 0:
+		$AnimationPlayer.current_animation = "Walk"
+	else:
+		$AnimationPlayer.current_animation = "Idle"
 	if velocity[0] < 0:
 		$PlayerSprite.flip_h = false
 	elif velocity[0] > 0:
 		$PlayerSprite.flip_h = true
 	move_and_slide()
+
 
 # check if the player is pressing the stab button and innitiates a stab in the direction of the player's current movement
 func stab():
@@ -84,7 +89,7 @@ func shoot():
 		hit_enemy = false
 		bullet_ready = false
 		$BulletCooldown.start()
-		$PlayerSprite.texture = load("res://Player/Slime empty.png")
+		$PlayerSprite.texture = load("res://Player/Empty_Sheet.png")
 
 
 # called every frame that handles attacks and movement
