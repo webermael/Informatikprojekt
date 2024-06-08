@@ -4,6 +4,8 @@ const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
 var enemy_pool = [preload("res://Enemies/Roller/Roller.tscn"), preload("res://Enemies/Dasher/Dasher.tscn")]
 var walls_placed = {0 : false, 1 : false, 2 : false, 3 : false}
 var enemies_in_room = Array ()
+var floor_shift = Vector2 (randi() % 80, randi() % 40)
+var floor_color = Color8(randi() % 150, randi() % 150, randi() % 150, 255)
 
 @onready var spawnpoints = [$Spawnpoint1, $Spawnpoint2, $Spawnpoint3, $Spawnpoint4, $Spawnpoint5]
 
@@ -67,6 +69,8 @@ func _on_room_inside_body_entered(body):
 	if body.is_in_group("Player"):
 		$/root/Game/RoomCamera.global_position = $CameraCenter.global_position
 		get_parent().current_room = self
+		body.get_node("Background").get_node("Background").offset = floor_shift
+		body.get_node("Background").get_node("Overlay").modulate = floor_color
 		if enemies_in_room.size() > 0:
 			get_parent().room_entered.emit()
 		for enemy in enemies_in_room:

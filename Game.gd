@@ -5,7 +5,6 @@ var in_cleared_room = true
 
 func change_song(delta, song, low_song, fade = 80, instant = false, stream_player = $Normal, not_stream_player = $Low):
 	if not instant and $Normal.stream != song and stream_player.volume_db <= 0:
-		print(stream_player.stream == song, stream_player.volume_db)
 		if stream_player.volume_db <= -40 and $Normal.stream != song:
 			$Normal.stream = song
 			$Normal.play(0)
@@ -16,11 +15,8 @@ func change_song(delta, song, low_song, fade = 80, instant = false, stream_playe
 		elif stream_player.volume_db > 0:
 			stream_player.volume_db = 0
 		else:
-			print(stream_player.volume_db)
 			stream_player.volume_db -= delta * fade
-			print(stream_player.volume_db)
 	elif instant and $Normal.stream != song:
-		print(in_cleared_room, $Player.health, stream_player == $Low)
 		$Normal.stream = song
 		$Normal.play(0)
 		$Low.stream = low_song

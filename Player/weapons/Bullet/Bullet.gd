@@ -12,7 +12,7 @@ func land(direction = 1):
 		landed_bullet.global_position = global_position
 		if direction > 0:
 			landed_bullet.flip_v = true
-		$/root/Game.add_child(landed_bullet)
+		$/root/Game.call_deferred("add_child", landed_bullet)
 		queue_free()
 
 

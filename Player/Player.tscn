@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://yja5fgu07w0"]
+[gd_scene load_steps=8 format=3 uid="uid://yja5fgu07w0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_kl8id"]
 [ext_resource type="PackedScene" uid="uid://bfhg3wvtl1jcy" path="res://Player/weapons/Stab/Stab.tscn" id="2_gs0qt"]
 [ext_resource type="Texture2D" uid="uid://dlkimvmlr16ey" path="res://Player/Slime full.png" id="3_cwi6v"]
+[ext_resource type="Texture2D" uid="uid://c0ugcy18t3cm6" path="res://Environment/Tile Background.png" id="4_lleov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgqdj"]
 radius = 64.0
@@ -58,18 +59,17 @@ shape = SubResource("CircleShape2D_vki13")
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -10
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -980.0
-offset_top = -560.0
-offset_right = 980.0
-offset_bottom = 560.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" type="Sprite2D" parent="Background"]
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_lleov")
+
+[node name="Overlay" type="ColorRect" parent="Background"]
+offset_left = -38.0
+offset_top = -12.0
+offset_right = 1959.0
+offset_bottom = 1101.0
+color = Color(0.235294, 0.235294, 0.235294, 0.313726)
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 layer = 10

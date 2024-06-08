@@ -77,10 +77,10 @@ func stab():
 func shoot():
 	if Input.is_action_pressed("ui_ranged_attack") and bullet_ready:
 		$ShootingPivot.rotation = last_movement
-		var Bullet = preload("res://Player/weapons/Bullet/Bullet.tscn").instantiate() 
-		Bullet.global_position = $ShootingPivot/ShootingPoint.global_position
-		Bullet.rotation = $ShootingPivot.rotation
-		$/root/Game.add_child(Bullet) 
+		var bullet = preload("res://Player/weapons/Bullet/Bullet.tscn").instantiate() 
+		bullet.global_position = $ShootingPivot/ShootingPoint.global_position
+		bullet.rotation = $ShootingPivot.rotation
+		$/root/Game.add_child(bullet) 
 		hit_enemy = false
 		bullet_ready = false
 		$BulletCooldown.start()
