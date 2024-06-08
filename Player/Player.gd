@@ -29,6 +29,11 @@ func _on_bullet_cooldown_timeout():
 		$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
 
 
+# making the ranged attack available after picking it up from the ground, (Cooldown to prevent spamming against walls)
+func _on_pickup_cooldown_timeout():
+	bullet_ready = true
+	$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
+
 # take damage if an enemie touches the players hitbox
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Hurtful") and $Hitbox/HitboxCollision.scale.x == 1:
@@ -63,11 +68,11 @@ func move():
 # check if the player is pressing the stab button and innitiates a stab in the direction of the player's current movement
 func stab():
 	if Input.is_action_pressed("ui_melee_attack") and stab_ready and stab_released:
-		if last_movement > PI / 2 and last_movement < 1.5 * PI:
+		$Stab.rotation = last_movement - PI / 2
+		if $Stab.rotation > 0 or $Stab.rotation < -PI:
 			$Stab/StabSprite.flip_v = false
 		else:
 			$Stab/StabSprite.flip_v = true
-		$Stab.rotation = last_movement - PI / 2
 		$Stab.visible = true
 		$Stab/StabCollision.disabled = false
 		stab_released = false
@@ -102,4 +107,3 @@ func _process(delta):
 		stab()
 		shoot()
 		move()
-

@@ -4,10 +4,11 @@ const SPEED = 1500
 const MAX_DISTANCE = 600
 var damage = 2
 var distance_traveled = 0
+var direction = Vector2.ZERO
 
 
 # deletes the midair bullet and instead places the landed bullet object, which can be picked up to reload the ranged attack
-func land(direction = 1):
+func land(direction):
 		var landed_bullet = preload("res://Player/weapons/Bullet/landed_bullet.tscn").instantiate()
 		landed_bullet.global_position = global_position
 		if direction > 0:
@@ -18,7 +19,7 @@ func land(direction = 1):
 
 # moves the bullet forward and makes it land if it has traveled a certain distance
 func _process(delta):
-	var direction = Vector2.RIGHT.rotated(rotation)
+	direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta
 	distance_traveled += direction.length() * SPEED * delta
 	if distance_traveled >= MAX_DISTANCE:
@@ -34,4 +35,4 @@ func _on_body_entered(body):
 			body.queue_free()
 		queue_free()
 	if body.is_in_group("Solid"):
-		land()
+		land(direction[0])
