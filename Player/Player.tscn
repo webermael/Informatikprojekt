@@ -92,6 +92,7 @@ position = Vector2(10, 0)
 
 [node name="Stab" parent="." instance=ExtResource("2_gs0qt")]
 visible = false
+position = Vector2(0, -30)
 
 [node name="StabDuration" type="Timer" parent="."]
 wait_time = 0.1

@@ -27,12 +27,14 @@ func _on_bullet_cooldown_timeout():
 	if hit_enemy:
 		bullet_ready = true
 		$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
+		$Stab.position[1] = -30
 
 
 # making the ranged attack available after picking it up from the ground, (Cooldown to prevent spamming against walls)
 func _on_pickup_cooldown_timeout():
 	bullet_ready = true
 	$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
+	$Stab.position[1] = -30
 
 # take damage if an enemie touches the players hitbox
 func _on_hitbox_body_entered(body):
@@ -95,7 +97,7 @@ func shoot():
 		bullet_ready = false
 		$BulletCooldown.start()
 		$PlayerSprite.texture = load("res://Player/Empty_Sheet.png")
-
+		$Stab.position[1] = 0
 
 # called every frame that handles attacks and movement
 func _process(delta):
