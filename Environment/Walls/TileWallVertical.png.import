@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coogeg5yr2k0x"
-path="res://.godot/imported/Full_Sheet.png-912c4de47fb0bbd45f1b61fd3236dba6.ctex"
+uid="uid://dr12a37icg0wa"
+path="res://.godot/imported/TileWallVertical.png-4a3c6d170f721c15aeca1039107157d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Full_Sheet.png"
-dest_files=["res://.godot/imported/Full_Sheet.png-912c4de47fb0bbd45f1b61fd3236dba6.ctex"]
+source_file="res://Environment/Walls/TileWallVertical.png"
+dest_files=["res://.godot/imported/TileWallVertical.png-4a3c6d170f721c15aeca1039107157d0.ctex"]
 
 [params]
 

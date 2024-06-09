@@ -1,17 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://basmlqct8tg4r"]
 
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_bghhp"]
+[ext_resource type="Texture2D" uid="uid://2ry2c5re7yf0" path="res://Environment/Walls/TileWallRight.png" id="1_yw03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7nwtp"]
-size = Vector2(20, 1080)
+size = Vector2(84, 1080)
 
 [node name="RightWall" type="CharacterBody2D" groups=["Solid"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1910, 540)
-scale = Vector2(0.15625, 8.4375)
-texture = ExtResource("1_bghhp")
+z_index = -1
+position = Vector2(1878, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yw03j")
 
 [node name="RightWallCollision" type="CollisionShape2D" parent="."]
-position = Vector2(1910, 540)
+position = Vector2(1878, 540)
 shape = SubResource("RectangleShape2D_7nwtp")

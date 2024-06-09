@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://3236gjlauddx"]
 
 [ext_resource type="Script" path="res://Enemies/Dasher/Dasher.gd" id="1_ibck1"]
-[ext_resource type="Texture2D" uid="uid://c2qry4opmjm2g" path="res://Enemies/Dasher/Dasher-Sheet.png" id="2_d27j1"]
+[ext_resource type="Texture2D" uid="uid://bxsfvwp2hxycf" path="res://Enemies/Dasher/Dasher-Sheet.png" id="2_d27j1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4bs3f"]
 radius = 31.5753

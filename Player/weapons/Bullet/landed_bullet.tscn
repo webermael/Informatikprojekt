@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Player/weapons/Bullet/landed_bullet.gd" id="2_ftj87"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b38px"]
-radius = 64.4981
+radius = 104.899
 
 [node name="LandedSprite" type="Sprite2D"]
 position = Vector2(1.54972e-06, -22)

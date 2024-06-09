@@ -1,26 +1,23 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbx1324d7a2tm"]
 
-[ext_resource type="Texture2D" uid="uid://b6djpocinrc2f" path="res://icon.svg" id="1_cc1rb"]
+[ext_resource type="Texture2D" uid="uid://s0btwnas848s" path="res://Environment/Doors/TileDoorLeft.png" id="1_b65ny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqn30"]
-size = Vector2(20, 380)
+size = Vector2(80, 360)
 
 [node name="LeftDoor" type="CharacterBody2D" groups=["Solid"]]
 
 [node name="LeftDoorSprite" type="Sprite2D" parent="."]
-position = Vector2(10, 190)
-scale = Vector2(0.15625, 2.96875)
-texture = ExtResource("1_cc1rb")
+z_index = -1
+position = Vector2(40, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_b65ny")
 
 [node name="LeftDoorTop" type="CollisionShape2D" parent="."]
-position = Vector2(10, 190)
+position = Vector2(40, 180)
 shape = SubResource("RectangleShape2D_kqn30")
 
-[node name="LeftDoorSprite2" type="Sprite2D" parent="."]
-position = Vector2(10, 890)
-scale = Vector2(0.15625, 2.96875)
-texture = ExtResource("1_cc1rb")
-
 [node name="LeftDoorBottom" type="CollisionShape2D" parent="."]
-position = Vector2(10, 890)
+position = Vector2(40, 878)
+scale = Vector2(1, 1.13)
 shape = SubResource("RectangleShape2D_kqn30")
