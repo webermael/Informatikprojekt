@@ -107,6 +107,10 @@ wait_time = 0.5
 wait_time = 0.75
 one_shot = true
 
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="PickupCooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -144,4 +148,5 @@ show_percentage = false
 [connection signal="timeout" from="StabCooldown" to="." method="_on_stab_cooldown_timeout"]
 [connection signal="timeout" from="ImmunityFrames" to="." method="_on_immunity_frames_timeout"]
 [connection signal="timeout" from="BulletCooldown" to="." method="_on_bullet_cooldown_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="PickupCooldown" to="." method="_on_pickup_cooldown_timeout"]

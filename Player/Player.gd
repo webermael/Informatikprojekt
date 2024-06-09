@@ -1,13 +1,18 @@
 extends CharacterBody2D
 
 const SPEED = 750.0
-var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+const DASH_DISTANCE = 400
+var input_direction = Vector2.RIGHT
 var last_movement = input_direction.angle()
 var stab_ready = true
 var stab_released = true
 var bullet_ready = true
 var hit_enemy = false
 var health = 5
+var dashing = false
+var dash_multiplier = 1
+var distance_dashed = 0
+var dash_ready = true
 signal player_died
 
 
@@ -53,9 +58,13 @@ func _on_immunity_frames_timeout():
 	$Hitbox/HitboxCollision.scale.x = 1
 
 
+func _on_dash_cooldown_timeout():
+	dash_ready = true
+
+
 # Moving the player according to the input direction
 func move():
-	velocity = input_direction * SPEED
+	velocity = input_direction * SPEED * dash_multiplier
 	if velocity.length() != 0:
 		$AnimationPlayer.current_animation = "Walk"
 	else:
@@ -99,13 +108,31 @@ func shoot():
 		$PlayerSprite.texture = load("res://Player/Empty_Sheet.png")
 		$Stab.position[1] = 0
 
+
+func dash():
+	if Input.is_action_pressed("ui_dash") and input_direction.length() != 0 and dash_ready:
+		dash_multiplier = 4
+		dashing = true
+	if distance_dashed >= DASH_DISTANCE:
+		dashing = false
+		dash_ready = false
+		distance_dashed = 0
+		dash_multiplier = 1
+		$DashCooldown.start()
+	print(dash_ready)
+
+
 # called every frame that handles attacks and movement
 func _process(delta):
-	input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+	if not dashing:
+		input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	else:
+		distance_dashed += input_direction.length() * SPEED * dash_multiplier * delta
 	if input_direction.length() != 0:
 		last_movement = input_direction.angle()
 	if health > 0:
 		stab()
 		shoot()
 		move()
+		dash()
+
