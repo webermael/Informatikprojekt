@@ -44,7 +44,7 @@ func open_menu(button_triggered = false, player_died = false, player_won = false
 			elif player_won:
 				$Menu/ContinueBg.visible = false
 				$Menu/RestartBg.visible = true
-				$Menu/RestartBg/RestartButton.text = "Next Level"
+				$Menu/RestartBg/RestartButton.text = "Next Floor"
 				$Menu/PointLabel.text = "Floor Cleared!"
 			else:
 				$Menu/ContinueBg.visible = true

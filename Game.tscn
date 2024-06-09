@@ -20,6 +20,7 @@ position = Vector2(960, 539)
 
 [node name="Menu" type="CanvasLayer" parent="."]
 layer = 15
+visible = false
 
 [node name="MenuBg" type="ColorRect" parent="Menu"]
 offset_left = -34.0
