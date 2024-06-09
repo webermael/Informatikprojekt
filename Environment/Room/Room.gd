@@ -78,6 +78,8 @@ func unpause_enemies():
 
 
 # moves the camera to the room the player has entered, also tells all enemies in the room that the player has entered
+# changes the color and position of the tile background attached to the player
+# gives out a signal when there are still enemies in the room
 func _on_room_inside_body_entered(body):
 	if body.is_in_group("Player"):
 		$/root/Game/RoomCamera.global_position = $CameraCenter.global_position

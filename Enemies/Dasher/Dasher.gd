@@ -10,7 +10,7 @@ var charge_ready = true
 var charge_ratio = 1
 var charging_ratio = 1
 var direction = Vector2.ZERO
-var health = 3
+var health = 2
 var spawnposition = Vector2.ZERO
 
 @onready var player = $/root/Game/Player

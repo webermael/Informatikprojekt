@@ -35,22 +35,26 @@ func open_menu(button_triggered = false, player_died = false, player_won = false
 		if not $Menu.visible:
 			$Menu.visible = true
 			$Player.in_menu = true
+			# when the player dies, shows points and option to restart, resetting points
 			if player_died:
 				$Menu/ContinueBg.visible = false
 				$Menu/RestartBg.visible = true
 				$Menu/RestartBg/RestartButton.text = "Restart"
 				$Menu/PointLabel.text = "You Got " + str(points) + " Points!"
 				points = 0
+			# after clearing a floor, gives the option to enter the next floor
 			elif player_won:
 				$Menu/ContinueBg.visible = false
 				$Menu/RestartBg.visible = true
 				$Menu/RestartBg/RestartButton.text = "Next Floor"
 				$Menu/PointLabel.text = "Floor Cleared!"
+			# on no special occasion, just shows a pause menu with the option to continue the game
 			else:
 				$Menu/ContinueBg.visible = true
 				$Menu/RestartBg.visible = false
 				$Menu/PointLabel.text = "Paused"
 			$Dungeon.current_room.pause_enemies()
+		# closes the menu if triggered by a button on screen, or by escape button while the menu is already open
 		elif ($Menu.visible and $Menu/ContinueBg.visible) or button_triggered:
 			$Menu.visible = false
 			$Player.in_menu = false
@@ -90,6 +94,7 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 
+# closes menu, deletes the dungeon and generates a new one placing the player in the first room
 func _on_restart_button_pressed():
 	open_menu(true)
 	$Dungeon.free()

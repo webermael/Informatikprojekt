@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-var health = 2
+var health = 4
 var player_in_room = false
 var spawnposition = Vector2.ZERO
 

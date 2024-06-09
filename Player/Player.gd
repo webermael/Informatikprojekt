@@ -17,6 +17,7 @@ var in_menu = false
 signal player_died
 
 
+# sets all variables to their original value (used after resetting)
 func reset():
 	input_direction = Vector2.RIGHT
 	last_movement = input_direction.angle()
@@ -78,6 +79,7 @@ func _on_immunity_frames_timeout():
 	$Hitbox/HitboxCollision.scale.x = 1
 
 
+# allows the player to use their dash again
 func _on_dash_cooldown_timeout():
 	dash_ready = true
 
@@ -129,6 +131,7 @@ func shoot():
 		$Stab.position[1] = 0
 
 
+# makes the player move quickly in one direction and unable to change it for a certain amount of time
 func dash():
 	if Input.is_action_pressed("ui_dash") and input_direction.length() != 0 and dash_ready:
 		dash_multiplier = 4
