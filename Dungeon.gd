@@ -5,6 +5,7 @@ var room_coordinates = Array ()
 var place = Vector2.ZERO
 var rooms_placed = 0
 var current_room = false
+var end_room = null
 const NUMBER_DIRECTION = {0 : "up", 1 : "right", 2 : "down", 3 : "left"}
 const HEIGHT = 1080
 const WIDTH = 1920
@@ -55,7 +56,7 @@ func generate():
 			place = new_place(direction, place)
 	# sets first and last room from the straight path
 	var start_room = rooms[0]
-	var end_room = rooms[-1]
+	end_room = rooms[-1]
 	# chooses a random room and attaches a room in a random direction until a certain number of rooms have been placed
 	while rooms_placed < ROOMS:
 		var parent_room = rooms[randi() % (rooms.size() - 1) + 1]
@@ -81,6 +82,5 @@ func _ready():
 
 # once the player dies, tells all the enemies in the room to stop moving and stops their animation
 func _on_player_player_died():
-	for enemy in current_room.enemies_in_room:
-		enemy.player_in_room = false
-		enemy.get_node("AnimationPlayer").active = false
+	current_room.pause_enemies()
+

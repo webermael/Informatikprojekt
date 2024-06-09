@@ -60,8 +60,21 @@ func spawn_enemy(min_enemies, max_enemies):
 # removes any enemie that died from the list of enemies in the room
 func enemy_died(enemy):
 	enemies_in_room.erase(enemy)
+	$/root/Game.points += 1
 	if enemies_in_room.size() <= 0:
 		get_parent().room_cleared.emit()
+
+
+func pause_enemies():
+	for enemy in enemies_in_room:
+		enemy.player_in_room = false
+		enemy.get_node("AnimationPlayer").active = false
+
+
+func unpause_enemies():
+	for enemy in enemies_in_room:
+		enemy.player_in_room = true
+		enemy.get_node("AnimationPlayer").active = true
 
 
 # moves the camera to the room the player has entered, also tells all enemies in the room that the player has entered
@@ -69,17 +82,20 @@ func _on_room_inside_body_entered(body):
 	if body.is_in_group("Player"):
 		$/root/Game/RoomCamera.global_position = $CameraCenter.global_position
 		get_parent().current_room = self
+		if get_parent().end_room != null and get_parent().end_room == self:
+			body.position = global_position + Vector2 (960, 540)
+			$/root/Game.open_menu(false, false, true)
 		body.get_node("Background").get_node("Background").offset = floor_shift
 		body.get_node("Background").get_node("Overlay").modulate = floor_color
 		if enemies_in_room.size() > 0:
 			get_parent().room_entered.emit()
 		for enemy in enemies_in_room:
 			enemy.player_in_room = true
-			enemy.position = enemy.spawnposition
-			
+
 
 # tells the enemies in the room that the player has exited, so they stop moving
 func _on_room_inside_body_exited(body):
 	if body.is_in_group("Player"):
 		for enemy in enemies_in_room:
 			enemy.player_in_room = false
+			enemy.position = enemy.spawnposition

@@ -13,7 +13,25 @@ var dashing = false
 var dash_multiplier = 1
 var distance_dashed = 0
 var dash_ready = true
+var in_menu = false
 signal player_died
+
+
+func reset():
+	input_direction = Vector2.RIGHT
+	last_movement = input_direction.angle()
+	stab_ready = true
+	stab_released = true
+	bullet_ready = true
+	hit_enemy = false
+	health = 5
+	dashing = false
+	dash_multiplier = 1
+	distance_dashed = 0
+	dash_ready = true
+	in_menu = false
+	$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
+	$UI_Layer/Healthbar.value = health
 
 
 # Toggling off the stab sprite after a certain time frame
@@ -41,6 +59,7 @@ func _on_pickup_cooldown_timeout():
 	$PlayerSprite.texture = load("res://Player/Full_Sheet.png")
 	$Stab.position[1] = -30
 
+
 # take damage if an enemie touches the players hitbox
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Hurtful") and $Hitbox/HitboxCollision.scale.x == 1:
@@ -51,6 +70,7 @@ func _on_hitbox_body_entered(body):
 		if health == 0:
 			$AnimationPlayer.active = false
 			player_died.emit()
+			$/root/Game.open_menu(false, true)
 
 
 # making the player vulnerable to damage again after being hit
@@ -119,7 +139,6 @@ func dash():
 		distance_dashed = 0
 		dash_multiplier = 1
 		$DashCooldown.start()
-	print(dash_ready)
 
 
 # called every frame that handles attacks and movement
@@ -130,9 +149,12 @@ func _process(delta):
 		distance_dashed += input_direction.length() * SPEED * dash_multiplier * delta
 	if input_direction.length() != 0:
 		last_movement = input_direction.angle()
-	if health > 0:
+	if health > 0 and not in_menu:
+		$AnimationPlayer.active = true
 		stab()
 		shoot()
 		move()
 		dash()
+	else:
+		$AnimationPlayer.active = false
 

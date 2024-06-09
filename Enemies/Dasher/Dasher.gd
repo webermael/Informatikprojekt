@@ -41,6 +41,12 @@ func _process(delta):
 				$ChargingTimer.start()
 	else:
 		velocity = Vector2.ZERO
+		player_weight = 1
+		is_charging = false
+		charge_ready = true
+		charge_ratio = 1
+		charging_ratio = 1
+		direction = Vector2.ZERO
 	move_and_slide()
 
 

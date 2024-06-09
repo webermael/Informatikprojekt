@@ -12,11 +12,110 @@ script = ExtResource("1_0qqco")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_1h8cj")]
+z_index = 10
 position = Vector2(960, 540)
 
 [node name="RoomCamera" type="Camera2D" parent="."]
 position = Vector2(960, 539)
 
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="MenuBg" type="ColorRect" parent="Menu"]
+offset_left = -34.0
+offset_top = -30.0
+offset_right = 1947.0
+offset_bottom = 1112.0
+color = Color(0, 0, 0, 0.67451)
+
+[node name="ContinueBg" type="ColorRect" parent="Menu"]
+offset_left = 768.0
+offset_top = 401.0
+offset_right = 1151.0
+offset_bottom = 506.0
+
+[node name="ContinueButton" type="Button" parent="Menu/ContinueBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -53.5
+offset_right = 192.5
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Continue"
+
+[node name="QuitBg" type="ColorRect" parent="Menu"]
+offset_left = 768.0
+offset_top = 550.0
+offset_right = 1151.0
+offset_bottom = 655.0
+
+[node name="QuitButton" type="Button" parent="Menu/QuitBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -53.5
+offset_right = 192.5
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit
+"
+
+[node name="RestartBg" type="ColorRect" parent="Menu"]
+visible = false
+offset_left = 768.0
+offset_top = 400.0
+offset_right = 1151.0
+offset_bottom = 504.999
+
+[node name="RestartButton" type="Button" parent="Menu/RestartBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -53.5
+offset_right = 192.5
+offset_bottom = 54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="PointLabel" type="Label" parent="Menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -400.0
+offset_right = 750.0
+offset_bottom = -290.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "
+"
+horizontal_alignment = 1
+
 [connection signal="room_cleared" from="Dungeon" to="." method="_on_dungeon_room_cleared"]
 [connection signal="room_entered" from="Dungeon" to="." method="_on_dungeon_room_entered"]
 [connection signal="player_died" from="Player" to="Dungeon" method="_on_player_player_died"]
+[connection signal="pressed" from="Menu/ContinueBg/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Menu/QuitBg/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/RestartBg/RestartButton" to="." method="_on_restart_button_pressed"]
