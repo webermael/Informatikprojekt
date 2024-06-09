@@ -1,13 +1,18 @@
 extends Node2D
 
 var in_cleared_room = true
+var points = 0
 var song_positions = {
 load("res://Music/room_clear_normal.mp3") : 0, 
 load("res://Music/room_clear_low.mp3") : 0, 
 load("res://Music/Main.mp3") : 0,
 load("res://Music/Main_Low.mp3") : 0
 }
-var points = 0
+
+
+# hides mouse cursor
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 #changes the song, if instant = true there is no transition, otherwise the current song fades out and the new one fades in
@@ -29,10 +34,11 @@ func change_song(delta, song, fade = 80, instant = false):
 		$AudioStreamPlayer.volume_db = 0
 
 
-# opens/closes the menu when pressing "esc", always closes it when pressing the button in the menu
+# opens/closes the menu when pressing "esc", always closes it when pressing the button in the menu also hides/shows the mouse cursor
 func open_menu(button_triggered = false, player_died = false, player_won = false):
 	if Input.is_action_just_pressed("ui_cancel") or button_triggered or player_died or player_won:
 		if not $Menu.visible:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			$Menu.visible = true
 			$Player.in_menu = true
 			# when the player dies, shows points and option to restart, resetting points
@@ -56,6 +62,7 @@ func open_menu(button_triggered = false, player_died = false, player_won = false
 			$Dungeon.current_room.pause_enemies()
 		# closes the menu if triggered by a button on screen, or by escape button while the menu is already open
 		elif ($Menu.visible and $Menu/ContinueBg.visible) or button_triggered:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			$Menu.visible = false
 			$Player.in_menu = false
 			$Dungeon.current_room.unpause_enemies()

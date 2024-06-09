@@ -160,4 +160,8 @@ func _process(delta):
 		dash()
 	else:
 		$AnimationPlayer.active = false
+	if health > 2:
+		$UI_Layer/Healthbar.self_modulate = Color.GREEN
+	else:
+		$UI_Layer/Healthbar.self_modulate = Color.RED
 
