@@ -1,63 +1,23 @@
-# Informatikprojekt - Space Shooter
-## Description
-### Game Type
-#### Rougelike (Permadeath)
-#### Fight enemies (similar to vampire survivor)
+# Informatikprojetk - The DunGel
 
-### Characters
-#### Player(s)
-Player has 3 actions (besides normal movement): melee, ranged, movement
-[expand, explain different players ...]
-##### Gooey?
-- **Melee** 
-[right hook];
-does a long thin hit with his right arm, then for a certain amount of time, he can do another hit with the left arm to charge an attack
-- **Ranged**
-[spike!];
-throws a spike which he has stored in his belly, because he only has one, he has to collect it again for further usage
-- **Movement**
-[shwoop];
-dashes forward, becoming invincible for the duration of the dash and gaining some bonus damage afterwards
-#### Enemies
-- **Roller**
-[spike ball (?)];
-rolls, approaches player directly
-- **Dasher**
-[arrow / insect ?];
-approaches player, charges, flies in player direction, charge cooldown
-- **Blocker & Ranger**
-[?];
-Cooporate, Blocker in front, ranger in back
-- **Shock wave**
-[STOMP];
-jupms in the air and crashes down, causing a (round) shock wave
-- **Comet**
-[Comet...];
-small wimsy enemy but can summon a comet to strike down at the players position
-- **Donner**
-[knockout];
-appears only with other enemies, creates a sonic boom, which will stun the player for a short time and deals very little damage?
-- **Blitzen**
-[zap];
-spawns in groups of 3 to 4, decently low health each but high speed and no contact damage, all gather around the player, they then create a lightning between two of them which deals damage
+## Controlls
 
-[add more enemies, explain in more detail ...]
+Move the Slime with the arrow keys. You can punch with C, shoot with Y and dash with Direction + X.
 
-### Game mechanics
-#### Dungeon generation
-#### Criteria for beating a dungeon
-#### Naming system
-#### Bosses / Goal / Menu ...
-[complete ...]
+## Enemies
 
-## Time plan
-### End of spring "brake" :D
-##### Planing
-- Refine final plan -> what _exactly_ should the game look like?
-- Make list: what should be discussed with M.V.?
-- Get the rest of the group to do their part
-- Ev. start on documentation / presentation
-##### Game
-- Decide on wether to add additional player character (and accordingly decide on their attacks / abilities)
-- Work out the final enemies (s. oben)
-[this section will be expanded ...]
+### Roller
+
+Rolls up to you and hits you with its Spikes.
+
+### Dasher
+
+As soon as it is at a certain distance, it charges up and charges at you in a straight line. Try to dodge it!
+
+## Dungeon
+
+The Dungeon get generated each time randomly, so that you have a different experience every playthrough.
+
+## Score
+
+For every enemie you kill, you receive one point. Try to improve your record every time!
